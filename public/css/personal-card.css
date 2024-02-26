@@ -1,0 +1,26 @@
+.personal-card {
+    display: flex;
+    flex-flow: row;
+    background-color: #fff;
+    border-bottom: 1px solid #ededed;
+    padding: 10px;
+}
+
+.personal-avatar {}
+.avatar, .avatar img {
+    width: 100%;
+}
+
+.personal-avatar {
+    background-color: #e9e9e9;
+    width: 50px;
+    height: 50px;
+    
+}
+
+
+.personal-info {
+    display: flex;
+    flex-flow: column;
+    margin: 0px 10px;
+}

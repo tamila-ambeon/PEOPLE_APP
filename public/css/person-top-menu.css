@@ -1,0 +1,27 @@
+#top-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #dddddd;
+    font-family: 'Plex', sans-serif;
+    padding-top: 10px;
+}
+
+.top-menu-item {
+    background-color: #dddddd;
+    margin: 0px 5px;
+    padding: 3px 10px;
+}
+
+.top-menu-item:hover {
+    background-color: #e5e5e5;
+    cursor: pointer;
+}
+
+.top-menu-item-active {
+    background: #f0f0f0;
+    margin: 0px 5px;
+    padding: 3px 10px;
+}

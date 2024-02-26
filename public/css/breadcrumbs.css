@@ -1,0 +1,38 @@
+#bread {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #1c1e24;
+}
+
+#bread a {
+    color: #ffe000;
+    font: 11px/1.4em fira sans,Arial,sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.bread-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background: #1c1e24;
+    padding-top: 1px;
+}
+
+.bread-item-active {
+    color: #fff;
+    font: 12px/1.4em fira sans,Arial,sans-serif;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+}
+
+.bread-divider {
+    margin: 0px 10px;
+    color: #fff;
+}

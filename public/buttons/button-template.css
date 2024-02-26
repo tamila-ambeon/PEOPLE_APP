@@ -1,0 +1,84 @@
+.v-button {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.v-button:hover {
+    cursor: pointer;
+}
+
+.v-button:active {
+    transform: scale(.95);
+}
+
+.v-button-inner {
+    padding: 2px 7px 2px 7px;
+}
+
+a.v-button-inner
+{
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+
+.v-btn-default {
+    background-color: #ededed;
+    color: #000;
+    border-radius: 4px;
+}
+
+.v-btn-default:hover {
+    background-color: #e7e7e7;
+}
+
+.v-btn-green {
+    border-radius: 4px;
+    background-color: #389b3c;
+    color: #fff;
+}
+
+.v-btn-green:hover {
+    background-color: #328b36;
+}
+
+.v-btn-red {
+    border-radius: 4px;
+    background-color: #df2f22;
+    color: #fff;
+}
+
+.v-btn-red:hover {
+    background-color: #cd2317;
+}
+
+.v-btn-disabled {
+    cursor: not-allowed;
+    border-radius: 4px;
+    background-color: #e9e9e9;
+    color: #a5a5a5;
+}
+
+.v-btn-disabled:hover {
+    cursor: disabled; /* TODO: */
+}
+
+
+.v-btn-small {
+    padding: 2px 7px 2px 7px;
+}
+.v-btn-middle {
+    padding: 5px 12px 5px 12px;
+    font-size: 13px;
+}
+.v-btn-big {
+    padding: 7px 17px 7px 17px;
+    font-size: 15px;
+}

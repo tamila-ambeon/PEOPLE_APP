@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Plex';
+    src: url('Plex/IBMPlexSerif-Bold.ttf') format('truetype');
+} 
+
+.font-plex {
+    font-family: 'Plex', sans-serif;
+}
+
+

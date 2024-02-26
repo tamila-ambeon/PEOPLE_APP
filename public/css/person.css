@@ -1,0 +1,33 @@
+.info-block-title {
+    padding: 3px 10px;
+    background-color: #ebeaea;
+    font-family: 'Plex', sans-serif;
+    margin: 5px 0px;
+    border-radius: 4px 4px 0px 0px;
+    /*font-size: 14px;*/
+}
+
+.info-block-first-level {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-block-description {
+    font-size: 11px;
+    font-style: italic;
+    color: #a9a6a6;
+    font-family: Arial;
+}
+
+.info-block-title-left {}
+.info-block-title-right {}
+
+.quill-content {
+    background: #fff;
+    padding: 10px 0px;
+    font-size: 13px;
+}
+
+.quill-content h1 { font-size: 28px; }
+.quill-content h2 { font-size: 24px; }
+.quill-content h3 { font-size: 20px; }

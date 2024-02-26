@@ -1,0 +1,12 @@
+.person-header {
+    font-size: 17px;
+}
+
+.person-sidebar-menu {
+    font-size: 14px;
+    background-color: #e4ebf1;
+}
+
+.person-sidebar-menu:hover {
+    background-color: #d0dce7;
+}
