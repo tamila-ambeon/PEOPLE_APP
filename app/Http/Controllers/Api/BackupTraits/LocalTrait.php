@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\BackupTraits;
 use Illuminate\Support\Facades\Schema;
 use Config;
 use DB;
+use Illuminate\Support\Facades\File;
 
 use Spatie\DbDumper\DbDumper as Dumper;
 
@@ -31,6 +32,14 @@ trait LocalTrait
 
     public function createDatabaseDump()
     {
+        
+        
+        $path = public_path('uploaded_files/backups');
+      //  File::ensureDirectoryExists($path);
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 0777, true, true);
+        }   
+
         try {
             \Spatie\DbDumper\Databases\MySql::create()
             ->setDumpBinaryPath("/Users/Shared/DBngin/mysql/8.0.33/bin")
