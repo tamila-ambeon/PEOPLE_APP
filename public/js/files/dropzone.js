@@ -48,12 +48,67 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
     accept: function(file, done) {
         done()
     },
+    
     addedfile: function (file) {
-        if (file.size > (1024 * 1024 * maxFileSizeDropzone)) // not more than 5mb
-        {
-            this.removeFile(file);
-            console.log("Only " + maxFileSizeDropzone + " mb file size is allowed");
-        }
+
+        if (this.element === this.previewsContainer) {
+            this.element.classList.add("dz-started");
+          }
+      
+          if (this.previewsContainer && !this.options.disablePreviews) {
+            file.previewElement = Dropzone.createElement(
+              this.options.previewTemplate.trim()
+            );
+            file.previewTemplate = file.previewElement; // Backwards compatibility
+      
+            this.previewsContainer.appendChild(file.previewElement);
+            for (var node of file.previewElement.querySelectorAll("[data-dz-name]")) {
+              node.textContent = file.name;
+            }
+            for (node of file.previewElement.querySelectorAll("[data-dz-size]")) {
+              node.innerHTML = this.filesize(file.size);
+            }
+      
+            if (this.options.addRemoveLinks) {
+              file._removeLink = Dropzone.createElement(
+                `<a class="dz-remove" href="javascript:undefined;" data-dz-remove>${this.options.dictRemoveFile}</a>`
+              );
+              file.previewElement.appendChild(file._removeLink);
+            }
+      
+            let removeFileEvent = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (file.status === Dropzone.UPLOADING) {
+                return Dropzone.confirm(
+                  this.options.dictCancelUploadConfirmation,
+                  () => this.removeFile(file)
+                );
+              } else {
+                if (this.options.dictRemoveFileConfirmation) {
+                  return Dropzone.confirm(
+                    this.options.dictRemoveFileConfirmation,
+                    () => this.removeFile(file)
+                  );
+                } else {
+                  return this.removeFile(file);
+                }
+              }
+            };
+      
+            for (let removeLink of file.previewElement.querySelectorAll(
+              "[data-dz-remove]"
+            )) {
+              removeLink.addEventListener("click", removeFileEvent);
+            }
+          }
+
+          if (file.size > (1024 * 1024 * maxFileSizeDropzone)) // not more than 5mb
+          {
+              this.removeFile(file);
+              console.log("Only " + maxFileSizeDropzone + " mb file size is allowed");
+          }
+
     },
     sending: function(file, xhr, formData) {
         let sendFile = formGrabberObject()
