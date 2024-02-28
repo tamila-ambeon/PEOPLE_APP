@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\People;
 use App\Models\History;
 use App\Models\Sign;
+use App\Models\PeopleSign;
 use App\Models\File as PersonFile;
 
 class PeopleController extends Controller
@@ -99,15 +100,22 @@ class PeopleController extends Controller
         $genderSign = [];
 
         if($person) {
-            
             foreach($signs as $sign) {
-                    $genderSign[0][$sign->id] = $sign->title_women;
-                    $genderSign[1][$sign->id] = $sign->title_men;
+                $genderSign[0][$sign->id] = $sign->title_women;
+                $genderSign[1][$sign->id] = $sign->title_men;
             }
+        } else {
+            dd('Person not found.');
         }
-        //dd($genderSign);
+        $signIDs = PeopleSign::where('people_id', $person->id)->get(['sign_id'])->pluck('sign_id')->toArray();
         
-        return view('pages.shortcuts', ['person' => $person, 'signs' => $signs, 'genderSign' => $genderSign]);
+        return view('pages.shortcuts', [
+            'person' => $person, 
+            'signs' => $signs, 
+            'genderSign' => $genderSign,
+            'checked_signs' => $signIDs
+
+        ]);
     }
 
     public function photographs($id) 

@@ -44,7 +44,7 @@
                     'id' => "signs", 
                     "disabled" => false, 
                     'items' => $genderSign[$person->gender], 
-                    'checked_values' => [0, 1]
+                    'checked_values' => $checked_signs
                 ])
             </div>
 
