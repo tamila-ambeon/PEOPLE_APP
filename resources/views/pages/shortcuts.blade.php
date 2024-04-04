@@ -39,7 +39,7 @@
             
             <h3>Обери ті ознаки, які вбачаються в поведінці цієї людини:</h3>
 
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row flex-wrap">
                 @include('forms.checkbox', [
                     'id' => "signs", 
                     "disabled" => false, 

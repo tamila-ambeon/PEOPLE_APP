@@ -20311,6 +20311,8 @@ class FormGrabber
      */
     grabInputs()
     {
+        this.formData = new FormData()
+        
         for (const inputId of this.params.input_ids) {
             
             // Спершу зчитую дані текстових редакторів:
