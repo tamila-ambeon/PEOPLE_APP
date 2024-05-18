@@ -44,6 +44,8 @@ class BackupController extends Controller
        // Надішли емайл з посиланнями на завантаження
        //$this->sendNotificationToEmail();
 
+       Backup::where('id', '<', ($this->backup->id - 10))->delete();
+
         return response()->json([
             "status" => 200,
             "message" => "Success request",

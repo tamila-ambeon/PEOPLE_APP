@@ -45,6 +45,7 @@ Route::delete('files', [FileController::class, 'delete']);
 
 
 Route::get('files_size', [BackupController::class, 'filesSize']);
+Route::get('backup', [BackupController::class, 'backup']);
 Route::post('backup', [BackupController::class, 'backup']);
 
 Route::get('backup-email-notification', [BackupController::class, 'sendNotification']);
