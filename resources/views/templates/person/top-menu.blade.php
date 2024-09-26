@@ -11,7 +11,7 @@
     
     @if( (URL::to('/') . "/person/" . $person->id . "/photographs") == $current)
         <div class="top-menu-item-active">
-            <a href="{{URL::to('/')}}/person/{{$person->id}}/photographs">Фотографії ({{$person->photos_count}})</a>
+            Фотографії ({{$person->photos_count}})
             </div>
     @else 
         <div class="top-menu-item">
@@ -22,11 +22,11 @@
 
     @if( (URL::to('/') . "/person/" . $person->id) . "/histories" == $current)
         <div class="top-menu-item-active">
-            <a href="{{URL::to('/')}}/person/{{$person->id}}/histories">Історія стосунків ({{$person->history_count}})</a>
+            Історія стосунків ({{$person->history_count}}, {{$person->relationship_quality}})
         </div>
     @else 
         <div class="top-menu-item">
-            <a href="{{URL::to('/')}}/person/{{$person->id}}/histories">Історія стосунків ({{$person->history_count}})</a>
+            <a href="{{URL::to('/')}}/person/{{$person->id}}/histories">Історія стосунків ({{$person->history_count}}, {{$person->relationship_quality}})</a>
         </div>
     @endif
 

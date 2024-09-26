@@ -12,22 +12,22 @@
         <link href="{{URL::to('/')}}/fonts/fonts.css" rel="stylesheet">
 
     </head>
-    <body>
+<body>
 
 <!-------------------------------------->
 <div class="container-fluid p-0">
 
 
-    <div style="display: flex; justify-content: space-between;" class="text-bg-dark">
+    <div style="display: flex; justify-content: space-between;" class="top-nav-bg" >
         <div id="home-outer" style="width: 30%;">
-            <ul class="nav text-bg-dark">
+            <ul class="nav ">
                 <li class="nav-item">
                     <a class="nav-link link-light" aria-current="page" href="{{ URL::to('/')}}">HOME</a>
                 </li>
             </ul>
         </div>
         <div class="menu-outer" style="width: 33%;">
-            <ul class="nav justify-content-center text-bg-dark">
+            <ul class="nav justify-content-center ">
 
                 <li class="nav-item">
                     <a class="nav-link link-light" aria-current="page" href="{{ URL::to('/')}}">Головна</a>
@@ -40,10 +40,7 @@
                 <li class="nav-item">
                     <a class="nav-link link-light" href="{{ URL::to('/')}}/signs-list">Ознаки</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link link-light" href="{{ URL::to('/')}}/backups">Бекапи</a>
-                </li>
+                
             </ul>
         </div>
         <div class="search-outer" style="display: flex; flex-direction: row-reverse; align-items: center; width: 30%;">

@@ -1,11 +1,11 @@
 #addr{}
 #addr2{}
 body {
-    background: #f0f0f0;
+    background: #eff1f3;
 }
 
 #page-content {
-    background: #f0f0f0;
+    background: #eff1f3;
 }
 
 .pointer {
@@ -65,15 +65,23 @@ body {
     color: #e1d007;
 }
 
+.top-nav-bg {
+    background: #1c1a18; /* #201e1c*/
+
+}
+
 .nav {
     font: 12px/1.4em fira sans,Arial,sans-serif;
     text-transform: uppercase;
     color: #ffe000;
+    
 }
 
 .nav-link:hover {
     background-color: #2f3238;
 }
+
+
 .pagination-outer {
     display: flex;
     flex-direction: row;
@@ -118,19 +126,25 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: #dddddd;
+    background-color: #8692a1;
     font-family: 'Plex', sans-serif;
     padding-top: 10px;
+    font-size: 15px;
 }
 
 .top-menu-item {
-    background-color: #dddddd;
+    background-color: #919eaf;;
     margin: 0px 5px;
     padding: 3px 10px;
 }
 
+.top-menu-item a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .top-menu-item:hover {
-    background-color: #e5e5e5;
+    background-color: #778393;
     cursor: pointer;
 }
 
@@ -139,13 +153,19 @@ body {
     margin: 0px 5px;
     padding: 3px 10px;
 }
+
+.info-block-title-right {
+    font-size: 14px;
+    display: flex;
+    align-self: flex-end;
+}
 .info-block-title {
     padding: 3px 10px;
-    background-color: #ebeaea;
+   /* background-color: #ebeaea;*/
     font-family: 'Plex', sans-serif;
     margin: 5px 0px;
     border-radius: 4px 4px 0px 0px;
-    /*font-size: 14px;*/
+    font-size: 22px;
 }
 
 .info-block-first-level {

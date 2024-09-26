@@ -1,10 +1,10 @@
 .info-block-title {
     padding: 3px 10px;
-    background-color: #ebeaea;
+   /* background-color: #ebeaea;*/
     font-family: 'Plex', sans-serif;
     margin: 5px 0px;
     border-radius: 4px 4px 0px 0px;
-    /*font-size: 14px;*/
+    font-size: 22px;
 }
 
 .info-block-first-level {

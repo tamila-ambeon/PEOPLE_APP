@@ -12,11 +12,7 @@
 @section('content')
 
 
-<!--------- TITLE: ---------->
-@include('templates.header', [
-    'title' => $person->surname ." ". $person->name
-])
-<!--------- /TITLE ---------->
+
 
 
 <!--------- BREADCRUMBS: ---------->
@@ -41,6 +37,23 @@
   <div class="row pt-3">
 
 
+@include("templates.person.section-title", [ 
+    'left' => 'Резюме:', 
+    'description' => 'Коротко про те, як взаємодіяти з цією людиною',
+    'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/photo_and_resume">редагувати</a> ]'
+])
+
+<div class="bg-white rounded">
+    @if($person->resume == null) 
+        <div class="p-1 quill-content">Інформації немає.</div>
+    @else 
+        @include('forms.quill-content', [
+            'id' => 'resume',
+            'value' => $person->resume
+        ])
+    @endif
+</div>
+
 
 @include("templates.person.section-title", [ 
     'left' => 'Основна інформація:', 
@@ -50,17 +63,14 @@
 <div class="container">
     <div class="row quill-content">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 rounded">
-            <div><b>Прізвище:</b> {{$person->surname}}</div>
-            <div><b>Ім'я:</b> {{$person->name}}</div>
-            <div><b>По-батькові:</b> {{$person->middlename}}</div>
-            <div><b>Гендер:</b> @if($person->gender == 0) Жінка @else Чоловік @endif</div>
-            <div><b>Якість стосунків:</b> {{$person->relationship_quality}}</div>
-            <div><b>Кількість стосунків:</b> {{$person->history_count}}</div>
+            <div><b>ПІБ:</b> {{$person->surname}} {{$person->name}} {{$person->middlename}}
+            </div>
+            <div><b>Дата знайомства:</b> {{$person->date_we_met}}</div>
+            <div><b>Дата народження:</b> {{$person->birth_date}}</div>
             
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 rounded">
-            <div><b>Дата знайомства:</b> {{$person->date_we_met}}</div>
-            <div><b>Дата народження:</b> {{$person->birth_date}}</div>
+
             <div><b>Range X:</b> {{$person->range_x}} (
                 @if($person->range_x >= 0 and $person->range_x <= 100) Близька людина - та, про кого треба думати
                 @elseif($person->range_x > 100 and $person->range_x <= 400) Дальня людина - та, про кого я змушений думати
@@ -80,29 +90,6 @@
 
 
 </div>
-
-
-
-@include("templates.person.section-title", [ 
-    'left' => 'Резюме:', 
-    'description' => 'Коротко про те, як взаємодіяти з цією людиною',
-    'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/photo_and_resume">редагувати</a> ]'
-])
-
-<div class="bg-white rounded">
-    @if($person->resume == null) 
-        <div class="p-1 quill-content">Інформації немає.</div>
-    @else 
-        @include('forms.quill-content', [
-            'id' => 'resume',
-            'value' => $person->resume
-        ])
-    @endif
-</div>
-
-
-
-
 
 
 
@@ -155,7 +142,7 @@
     'description' => 'Ознаки, які вбачаються у поведінці людини',
     'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/signs">редагувати</a> ]'
 ])
-<div class="mb-3 bg-white">
+<div class="mb-3">
     @forelse($person->signs as $sign) 
         @if($person->gender == 0)
             <a href="{{URL::to("/")}}/sign/{{$sign->id}}" class="btn btn-sm @if($sign->type_id == 1) btn-success @elseif($sign->type_id == -1) btn-danger @else btn-light @endif">{{$sign->title_women}}</a>
@@ -168,6 +155,44 @@
     
 </div>
 
+
+
+
+
+@include("templates.person.section-title", [ 'left' => 'Який контент споживає:', 'right' => '' ])
+<div class="bg-white rounded">
+    TODO!
+</div>
+
+@include("templates.person.section-title", [ 'left' => 'Чим ця людина може бути корисна:', 'right' => '' ])
+<div class="bg-white rounded">
+    TODO!
+</div>
+
+@include("templates.person.section-title", [ 'left' => 'Який вайб випромінює:', 
+'description' => 'Що я відчуваю після спілкування з цією людиною?',
+'right' => '' ])
+<div class="bg-white rounded">
+    TODO!
+</div>
+
+@include("templates.person.section-title", [ 
+    'left' => 'Слабкості:', 
+    'description' => 'Чим можна надавити, щоб прожати цю людину?',
+    'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/other-info">редагувати</a> ]'
+])
+
+
+<div class="bg-white rounded">
+    @if($person->weaknesses== null) 
+        <div class="p-1 quill-content">Інформації немає.</div>
+    @else 
+        @include('forms.quill-content', [
+            'id' => 'weaknesses',
+            'value' => $person->weaknesses
+        ])
+    @endif
+</div>
 
 
 @include("templates.person.section-title", [ 
@@ -188,28 +213,14 @@
 </div>
 
 
-@include("templates.person.section-title", [ 
-    'left' => 'Слабкості:', 
-    'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/other-info">редагувати</a> ]'
-])
 
 
-<div class="bg-white rounded">
-    @if($person->weaknesses== null) 
-        <div class="p-1 quill-content">Інформації немає.</div>
-    @else 
-        @include('forms.quill-content', [
-            'id' => 'weaknesses',
-            'value' => $person->weaknesses
-        ])
-    @endif
-</div>
-
-
+    <!---------->
   </div>
 </div>
 <!------------------->
     
+
 @endsection
 @else 
 

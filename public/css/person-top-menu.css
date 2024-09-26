@@ -4,19 +4,25 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: #dddddd;
+    background-color: #8692a1;
     font-family: 'Plex', sans-serif;
     padding-top: 10px;
+    font-size: 15px;
 }
 
 .top-menu-item {
-    background-color: #dddddd;
+    background-color: #919eaf;;
     margin: 0px 5px;
     padding: 3px 10px;
 }
 
+.top-menu-item a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .top-menu-item:hover {
-    background-color: #e5e5e5;
+    background-color: #778393;
     cursor: pointer;
 }
 
@@ -24,4 +30,10 @@
     background: #f0f0f0;
     margin: 0px 5px;
     padding: 3px 10px;
+}
+
+.info-block-title-right {
+    font-size: 14px;
+    display: flex;
+    align-self: flex-end;
 }

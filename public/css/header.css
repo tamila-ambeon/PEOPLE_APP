@@ -3,12 +3,19 @@
     color: #e1d007;
 }
 
+.top-nav-bg {
+    background: #1c1a18; /* #201e1c*/
+
+}
+
 .nav {
     font: 12px/1.4em fira sans,Arial,sans-serif;
     text-transform: uppercase;
     color: #ffe000;
+    
 }
 
 .nav-link:hover {
     background-color: #2f3238;
 }
+
