@@ -1,6 +1,6 @@
 <div class="info-block-title">
     <div class="info-block-first-level">
-        <div class="info-block-title-left">
+        <div class="font-roboto font-size-19">
             {!! $left !!}
         </div>
         <div class="info-block-title-right">

@@ -1,3 +1,9 @@
+.edit-button-outer {
+    background: #eff1f338;
+}
+
+
+
 .info-block-title {
     padding: 3px 10px;
    /* background-color: #ebeaea;*/
@@ -24,10 +30,18 @@
 
 .quill-content {
     background: #fff;
-    padding: 10px 0px;
+    padding: 10px;
     font-size: 13px;
 }
 
 .quill-content h1 { font-size: 28px; }
 .quill-content h2 { font-size: 24px; }
 .quill-content h3 { font-size: 20px; }
+
+
+.fixed-sidebar-200 {
+    width: 200px; /* Фіксована ширина лівої колонки */
+}
+.grow-content {
+    flex-grow: 1; /* Права колонка заповнює весь доступний простір */
+}

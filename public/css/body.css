@@ -9,3 +9,7 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.fc-secondary {
+    color: #8692a1;
+}

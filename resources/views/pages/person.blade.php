@@ -12,9 +12,6 @@
 @section('content')
 
 
-
-
-
 <!--------- BREADCRUMBS: ---------->
 @include('templates.breadcrumbs', [ 'items' => [
     ["title" => "Головна", "url" => URL::to('/')],
@@ -34,103 +31,74 @@
 
 <!------------------->
 <div class="container mb-5">
-  <div class="row pt-3">
+    <div class="row pt-3">
 
 
-@include("templates.person.section-title", [ 
-    'left' => 'Резюме:', 
-    'description' => 'Коротко про те, як взаємодіяти з цією людиною',
-    'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/photo_and_resume">редагувати</a> ]'
-])
 
-<div class="bg-white rounded">
-    @if($person->resume == null) 
-        <div class="p-1 quill-content">Інформації немає.</div>
-    @else 
-        @include('forms.quill-content', [
-            'id' => 'resume',
-            'value' => $person->resume
-        ])
-    @endif
-</div>
-
-
-@include("templates.person.section-title", [ 
-    'left' => 'Основна інформація:', 
-    'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/contacts">редагувати</a> ]'
-])
-
-<div class="container">
-    <div class="row quill-content">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 rounded">
-            <div><b>ПІБ:</b> {{$person->surname}} {{$person->name}} {{$person->middlename}}
-            </div>
-            <div><b>Дата знайомства:</b> {{$person->date_we_met}}</div>
-            <div><b>Дата народження:</b> {{$person->birth_date}}</div>
-            
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 rounded">
-
-            <div><b>Range X:</b> {{$person->range_x}} (
-                @if($person->range_x >= 0 and $person->range_x <= 100) Близька людина - та, про кого треба думати
-                @elseif($person->range_x > 100 and $person->range_x <= 400) Дальня людина - та, про кого я змушений думати
-                @elseif($person->range_x > 400) Ворожа людина - та, кого слід уникати, з ким не можна мати справи, щоб не постраждати 
-                @else 
-                @endif
-                )</div>
-            <div><b>Range Y:</b> {{$person->range_y}} (
-                @if($person->range_y >= 0 and $person->range_y <= 100) Важлива людина
-                @elseif($person->range_y > 100 and $person->range_y <= 400) Середня важливість
-                @elseif($person->range_y > 400) Незначна людина
-                @else 
-                @endif
-            )</div>
-        </div>
+<!--- RESUME: --->
+<div class="d-flex mt-2 mb-2">
+    <div class="fixed-sidebar-200">
+        <div class="font-roboto-bold font-size-19">Резюме:</div>
+        <div class="font-roboto-light font-size-12 fc-secondary">Коротко про те, як взаємодіяти з цією людиною</div>
     </div>
-
-
-</div>
-
-
-
-
-<div class="container p-0">
-    <div class="row mt-3">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-
-        @include("templates.person.section-title", [ 
-            'left' => 'Контакти:', 
-            'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/contacts">редагувати</a> ]'
-        ]) 
-        @if($person->contacts == null) 
-            <div class="ps-3 pe-3 p-1 quill-content">Інформації немає.</div>
-        @else 
-            <div class="ps-3 pe-3 bg-white rounded">
-            @include('forms.quill-content', [
-                'id' => 'contacts',
-                'value' => $person->contacts
-            ])
-            </div>
-        @endif
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 rounded">
-        @include("templates.person.section-title", [ 
-            'left' => 'Адреси:', 
-            'right' => '[ <a href="'. URL::to("/") .'/person/'. $person->id.'/edit/contacts">редагувати</a> ]'
-        ]) 
-        @if($person->adresses == null) 
-            <div class="ps-3 pe-3 p-1 quill-content">Інформації немає.</div>
-        @else 
-            <div class="ps-3 pe-3 bg-white rounded">
-            @include('forms.quill-content', [
-                'id' => 'adresses',
-                'value' => $person->adresses
-            ])
-            </div>
-        @endif
-        </div>
+    <div class="grow-content">
+        <div class="bg-white border">
+            @if($person->resume != null) 
+                @include('forms.quill-content', [
+                    'id' => 'resume',
+                    'value' => $person->resume
+                ])  
+            @endif
+            <div class="d-flex flex-row-reverse @if($person->resume != null) border-top @endif ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/photo_and_resume">редагувати</a></div> 
+        </div> 
     </div>
 </div>
+<!--- /RESUME --->
+
+
+
+<!--- MAIN INFO: --->
+<div class="d-flex mt-2 mb-2">
+    <div class="fixed-sidebar-200">
+        <div class="font-roboto-bold font-size-19">Основна інформація:</div>
+        <div class="font-roboto-light font-size-12 fc-secondary">Загальні відомості</div>
+    </div>
+    <div class="grow-content">
+        <div class="bg-white border">
+            <div class="p-2">
+                <div><b>ПІБ:</b> {{$person->surname}} {{$person->name}} {{$person->middlename}} </div>
+                <div><b>Дата знайомства:</b> {{$person->date_we_met}}</div>
+                <div><b>Дата народження:</b> {{$person->birth_date}}</div>
+            </div>
+            <div class="d-flex flex-row-reverse border-top ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/contacts">редагувати</a></div> 
+        </div> 
+    </div>
+</div>
+<!--- /MAIN INFO --->
+
+
+<!--- CONTACT: --->
+<div class="d-flex mt-2 mb-2">
+    <div class="fixed-sidebar-200">
+        <div class="font-roboto-bold font-size-19">Контакти та адреси:</div>
+        <div class="font-roboto-light font-size-12 fc-secondary">Всі способи зв'язатись з людиною. Соціальні мережі.</div>
+    </div>
+    <div class="grow-content">
+        <div class="bg-white border">
+            @if($person->contacts != null) 
+                <div class="ps-3 pe-3 bg-white rounded">
+                @include('forms.quill-content', [
+                    'id' => 'contacts',
+                    'value' => $person->contacts
+                ])
+                </div>
+            @endif
+            <div class="d-flex flex-row-reverse @if($person->contacts != null) border-top @endif ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/contacts">редагувати</a></div> 
+        </div> 
+    </div>
+</div>
+<!--- /CONTACT --->
+
 
 
 

@@ -54,7 +54,9 @@ Route::get('templates-viewer', function () {
 
 
 
-
+Route::group(['prefix' => 'example_view'], function () {
+    Route::get('question_view', function () { return view('example_views.question_view'); });
+});
 
 
 /*

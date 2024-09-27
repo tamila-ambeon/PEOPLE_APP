@@ -11,13 +11,6 @@
 @if($person != null) 
 @section('content')
 
-<!--------- TITLE: ---------->
-@include('templates.header', [
-    'title' => $person->surname . ' ' .$person->name
-])
-<!--------- /TITLE ---------->
-
-
 <!--------- BREADCRUMBS: ---------->
 @include('templates.breadcrumbs', [ 'items' => [
     ["title" => "Головна", "url" => URL::to('/')],
