@@ -43,22 +43,14 @@ class PeopleController extends Controller
             ], 404);
         }
 
-        if($request->has("name")) { $person->name = $request->name; }
-        if($request->has("surname")) { $person->surname = $request->surname; }
-        if($request->has("middlename")) { $person->middlename = $request->middlename; }
-        if($request->has("gender")) { $person->gender = $request->gender[0]; }
-        if($request->has("birth_date")) { $person->birth_date = $request->birth_date; }
-        if($request->has("date_we_met")) { $person->date_we_met = $request->date_we_met; }
-        if($request->has("adresses")) { $person->adresses = $request->adresses; }
-        if($request->has("contacts")) { $person->contacts = $request->contacts; }
-        if($request->has("other_info")) { $person->other_info = $request->other_info; }
-        if($request->has("resume")) { $person->resume = $request->resume; }
-        if($request->has("weaknesses")) { $person->weaknesses = $request->weaknesses; }
-        if($request->has("avatar_id")) { $person->avatar_id = $request->avatar_id; }
-        if($request->has("range_x")) { $person->range_x = $request->range_x; }
-        if($request->has("range_y")) { $person->range_y = $request->range_y; }
-
+        // Припустимо, що в запиті не передано поле 'password'
+        $data = $request->only([
+            "name", "surname", "middlename", "gender", "birth_date", "date_we_met", "adresses", "contacts", "other_info", "resume", "weaknesses", "avatar_id", "decision", "circle", 'wing', 'weight', 'religion', 'radicalism', 'trust_in_person', 'trust_in_me', 'dangerous', 'respect_in_me', 'benefits_for_me'
+        ]);
+    
+        $person->fill($data);
         $person->save();
+
         
         return response()->json([
             "status" => 200,

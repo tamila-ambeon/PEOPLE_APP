@@ -1,4 +1,4 @@
-class Resume extends FormGrabber
+class Decision extends FormGrabber
 {
     beforeSend() {}
     onSuccess(json) {
@@ -8,11 +8,11 @@ class Resume extends FormGrabber
 }
 
 try {
-    let mainInfo = new Resume({
+    let mainInfo = new Decision({
         "debug": true,
         'button_id': "save_resume",
         'switch_button_id': "handle_request_resume",
-        'input_ids': ["id", "resume"],
+        'input_ids': ["id", "decision"],
         'method': "PATCH",
         'endpoint': document.getElementsByTagName("base")[0].href + "api/main_info",
     })

@@ -82,8 +82,16 @@ class PeopleController extends Controller
     {
         $person = People::where('id', $id)->first();
         
-        return view('pages.edit_photo_and_resume', ['person' => $person]);
+        return view('pages.edit_pages.resume', ['person' => $person]);
     }
+
+    public function decision($id) 
+    {
+        $person = People::where('id', $id)->first();
+        
+        return view('pages.edit_pages.decision', ['person' => $person]);
+    }
+    
     
     public function contacts($id) 
     {

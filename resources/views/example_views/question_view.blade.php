@@ -34,6 +34,93 @@
 </div>
 
 
+
+<!--- BLOCK: --->
+<div class="container mt-3 mb-3">
+    <div class="row">
+
+        <!--- Мета: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+            <div class="">
+                <div class="font-roboto-bold font-size-19">Політичні погляди:</div>
+                <div class="font-roboto-light font-size-12 fc-secondary">Крило і радикальність</div>
+            </div>
+        </div>
+        <!--- /Мета --->
+
+        <!--- Контент: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9 p-0">
+            <div class="bg-white border mt-1">
+                
+                <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
+                    <a href="{{URL::to("/")}}">редагувати</a>
+                </div>  
+            </div>
+        </div>
+        <!--- /Контент --->
+
+    </div> 
+</div>
+<!--- /BLOCK --->
+
+
+
+
+
+
+
+<div class="grow-content">
+    <div class="bg-white border">
+            
+            <div class="d-flex flex-row">
+                <div class="d-flex flex-row p-1">
+                    <div class="font-size-13">
+                        @include('forms.select', [
+                            'id' => "wing",  
+                            'items' => [0 => "Невідомо", 1 => "Ліві", 2 => "Праві", 3 => "Центристські"],
+                            "disabled" => true,
+                            'selected_value' => 0
+                        ])
+                    </div>
+                </div>
+                <div class="d-flex flex-row p-1">
+                    <div class="font-size-13">
+                        @include('forms.select', [
+                            'id' => "radicalism",  
+                            'items' => [0 => "Невідомо", 1 => "Помірковані", 2 => "Радикальні"],
+                            "disabled" => true,
+                            'selected_value' => 0
+                        ])
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border-top d-flex ps-2 pe-2 font-size-12">
+                Треба знати політичні погляди ВСІХ оточуючих людей. Щоб знати хто мене оточує. 
+                <br>І можливо ще де вони перебувають (територіально, категорично), щоб знати куди йти, щоб знайти своїх.
+                <br>Politics is reflection of values.
+                <br>Build relations які грунтуються на спільних values.
+            </div>
+            <div class="bg-white border-top d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
+                <a href="{{URL::to("/")}}">редагувати</a>
+            </div> 
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="pt-3 pb-3 text-bg-dark mt-5">
     <div class="container">
 Низ

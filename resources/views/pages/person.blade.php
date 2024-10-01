@@ -33,69 +33,8 @@
 <div class="container mb-5">
     <div class="row pt-3">
 
-
-
-<!--- RESUME: --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Резюме:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Коротко про те, як взаємодіяти з цією людиною. Якщо людина робила мені добро, або зло - це мати бути тут коротко, щоб розуміти причину мого ставлення.</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-            @if($person->resume != null) 
-                @include('forms.quill-content', [
-                    'id' => 'resume',
-                    'value' => $person->resume
-                ])  
-            @endif
-            <div class="d-flex flex-row-reverse @if($person->resume != null) border-top @endif ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/photo_and_resume">редагувати</a></div> 
-        </div> 
-    </div>
-</div>
-<!--- /RESUME --->
-
-
-<!--- : --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Рішення:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Чи хочу я цю людину в своєму житті?</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-                
-                <div class="d-flex flex-row">
-                    <div class="d-flex flex-row p-1">
-                        <div class="font-size-13">
-                            @include('forms.select', [
-                                'id' => "decision",  
-                                'items' => [
-                                    0 => "Невідомо", 
-                                    1 => "Жодних справ з цією людиною", 
-                                    2 => "Краще уникати", 
-                                    3 => "Нейтрально",
-                                    4 => "Краще бути в контакті",
-                                    5 => "З цією людиною вигідно мати справу",
-                                    6 => "Дуже важлива для мене людина"
-                                ],
-                                "disabled" => true,
-                                'selected_value' => 0
-                            ])
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white border-top d-flex ps-2 pe-2 font-size-12">
-                    Варто чи ні мати стосунки з цією людиною.
-                </div>
-                <div class="bg-white border-top d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                    <a href="{{URL::to("/")}}/person/{{$person->id}}/edit/">редагувати</a>
-                </div> 
-            </div>
-
-    </div> 
-</div>
-<!--- / --->
+@include('parts.person.resume')
+@include('parts.person.decision')
 
 <!--- MAIN INFO: --->
 <div class="d-flex mt-2 mb-2">
@@ -132,16 +71,10 @@
                                     </td>
                                     <td>
                                         @include('forms.select', [
-                                            'id' => "wage",  
-                                            'items' => [ 
-                                                0 => "Невідомо", 
-                                                1 => "Незначна людина", 
-                                                2 => "Має невеликий вплив", 
-                                                3 => "Має значний вплив", 
-                                                4 => "Можновладець"
-                                            ],
+                                            'id' => "weight",  
+                                            'items' => config('people.weight'),
                                             "disabled" => true,
-                                            'selected_value' => 0
+                                            'selected_value' => $person->weight
                                         ])
                                     </td>
                                 </tr>                     
@@ -149,9 +82,9 @@
                                     <td>
                                         @include('forms.select', [
                                             'id' => "religion",  
-                                            'items' => [ 0 => "Невідомо", 1 => "Атеїст", 2 => "Християнин", 3 => "Мусульманин"],
+                                            'items' => config('people.religion'),
                                             "disabled" => true,
-                                            'selected_value' => 0
+                                            'selected_value' => $person->religion
                                         ])  
                                     </td>
                                 </tr>
@@ -159,14 +92,9 @@
                                     <td>
                                         @include('forms.select', [
                                             'id' => "circle",  
-                                            'items' => [ 
-                                                0 => "Невідомо", 
-                                                1 => "Близька людина", 
-                                                2 => "Дальня людина", 
-                                                3 => "Нейтральна людина", 
-                                                4 => "Ворожа людина"],
+                                            'items' => config('people.circle'),
                                             "disabled" => true,
-                                            'selected_value' => 0
+                                            'selected_value' => $person->circle
                                         ])
                                     </td>
                                 </tr>
@@ -202,9 +130,9 @@
                         <div class="font-size-13">
                             @include('forms.select', [
                                 'id' => "wing",  
-                                'items' => [0 => "Невідомо", 1 => "Ліві", 2 => "Праві", 3 => "Центристські"],
+                                'items' => config('people.wing'),
                                 "disabled" => true,
-                                'selected_value' => 0
+                                'selected_value' => $person->wing
                             ])
                         </div>
                     </div>
@@ -212,9 +140,9 @@
                         <div class="font-size-13">
                             @include('forms.select', [
                                 'id' => "radicalism",  
-                                'items' => [0 => "Невідомо", 1 => "Помірковані", 2 => "Радикальні"],
+                                'items' => config('people.radicalism'),
                                 "disabled" => true,
-                                'selected_value' => 0
+                                'selected_value' => $person->radicalism
                             ])
                         </div>
                     </div>
@@ -255,37 +183,23 @@
                             <td>
                                 @include('forms.select', [
                                     'id' => "trust_in_person",  
-                                    'items' => [ 
-                                        0 => "Невідомо", 
-                                        1 => "Не довіряю", 
-                                        2 => "Швидше ні", 
-                                        3 => "Нейтрально", 
-                                        4 => "Швидше так",
-                                        5 => "Довіряю",
-                                    ],
+                                    'items' => config('people.trust_in_person'),
                                     "disabled" => true,
-                                    'selected_value' => 0
+                                    'selected_value' => $person->trust_in_person
                                 ])
                             </td>
                         </tr>                     
                         <tr><td class="font-roboto-bold">
                             Довіра до мене:
-                            <br><span class="font-roboto-light font-size-12 fc-secondary">Чи відчуваю Я, що людина мені довіряє? </span>
+                            <br><span class="font-roboto-light font-size-12 fc-secondary">Чи відчуваю Я, що людина мені довіряє?</span>
 
                         </td>
                             <td>
                                 @include('forms.select', [
                                     'id' => "trust_in_me",  
-                                    'items' => [ 
-                                        0 => "Невідомо", 
-                                        1 => "Не довіряє", 
-                                        2 => "Швидше ні", 
-                                        3 => "Нейтрально", 
-                                        4 => "Швидше так",
-                                        5 => "Довіряє",
-                                    ],
+                                    'items' => config('people.trust_in_me'),
                                     "disabled" => true,
-                                    'selected_value' => 0
+                                    'selected_value' => $person->trust_in_me
                                 ]) 
                             </td>
                         </tr>
@@ -299,16 +213,9 @@
                             <td>
                                 @include('forms.select', [
                                     'id' => "dangerous",  
-                                    'items' => [ 
-                                        0 => "Невідомо", 
-                                        1 => "Цілком безпечна", 
-                                        2 => "Швидше безпечна", 
-                                        3 => "Нейтральна", 
-                                        4 => "Може бути небезпечною",
-                                        5 => "Небезпечна!",
-                                    ],
+                                    'items' =>  config('people.dangerous'),
                                     "disabled" => true,
-                                    'selected_value' => 0
+                                    'selected_value' => $person->dangerous
                                 ]) 
                             </td>
                         </tr>
@@ -321,16 +228,9 @@
                             <td>
                                 @include('forms.select', [
                                     'id' => "respect_in_me",  
-                                    'items' => [ 
-                                        0 => "Невідомо", 
-                                        1 => "Зневажає", 
-                                        2 => "Мало поваги", 
-                                        3 => "Нейтрально", 
-                                        4 => "Виявляє повагу",
-                                        5 => "Поважає",
-                                    ],
+                                    'items' => config('people.respect_in_me'),
                                     "disabled" => true,
-                                    'selected_value' => 0
+                                    'selected_value' => $person->respect_in_me
                                 ]) 
                             </td>
                         </tr>
@@ -343,14 +243,9 @@
                             <td>
                                 @include('forms.select', [
                                     'id' => "benefits_for_me",  
-                                    'items' => [ 
-                                        0 => "Невідомо", 
-                                        1 => "Жодної користі", 
-                                        2 => "Мало користі",  
-                                        3 => "Багато користі",
-                                    ],
+                                    'items' => config('people.benefits_for_me'),
                                     "disabled" => true,
-                                    'selected_value' => 0
+                                    'selected_value' => $person->benefits_for_me
                                 ]) 
                             </td>
                         </tr>
