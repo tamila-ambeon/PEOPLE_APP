@@ -11,8 +11,12 @@ Route::get('create-person', function () {   return view('pages.create_person'); 
 Route::get('person/{id}', [PeopleController::class, 'person']);
 Route::get('person/{id}/edit/main-info', [PeopleController::class, 'mainInfo']);
 Route::get('person/{id}/edit/other-info', [PeopleController::class, 'otherInfo']);
+
+
+Route::get('person/{id}/open_answer/{field}', [PeopleController::class, 'openAnswer']);
 Route::get('person/{id}/resume', [PeopleController::class, 'photo_and_resume']);
 Route::get('person/{id}/decision', [PeopleController::class, 'decision']);
+
 Route::get('person/{id}/edit/contacts', [PeopleController::class, 'contacts']);
 Route::get('person/{id}/edit/signs', [PeopleController::class, 'shortcuts']);
 Route::get('person/{id}/edit/histories/{history_id}', [PeopleController::class, 'edit_history']);

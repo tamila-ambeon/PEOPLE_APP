@@ -27,6 +27,12 @@ return new class extends Migration
             $table->integer('benefits_for_me')->default(0)->comment('Чим більше користі приносить, тим більше значення має слово цієї людини.
             Якщо ця людина для мене не є корисною, то навіщо я витрачаю на неї час?');
 
+            $table->text('personal_resources')->nullable()->comment('Що ця людина може дати мені?');
+            $table->text('potential_contributions')->nullable()->comment('Що я можу дати цій людині?');
+            $table->text('vibe')->nullable()->comment('Який вайб випромінює? Що я відчуваю після спілкування з цією людиною?');
+            $table->text('content_preferences')->nullable()->comment('Який контент споживає? Хто є кумиром людини? Ким ця людина захоплюється? Що її вражає?');
+
+            
         });
     }
 
@@ -49,6 +55,10 @@ return new class extends Migration
             $table->dropColumn('dangerous');
             $table->dropColumn('respect_in_me');
             $table->dropColumn('benefits_for_me');
+            $table->dropColumn('personal_resources');
+            $table->dropColumn('potential_contributions');
+            $table->dropColumn('vibe');
+            $table->dropColumn('content_preferences');
         });
     }
 };

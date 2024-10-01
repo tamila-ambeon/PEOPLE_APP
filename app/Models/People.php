@@ -11,7 +11,7 @@ class People extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public $fillable = ["name", "surname", "middlename", "gender", "birth_date", "date_we_met", "adresses", "contacts", "other_info", "resume", "weaknesses", "avatar_id", "decision", "circle", 'wing', 'weight', 'religion', 'radicalism', 'trust_in_person', 'trust_in_me', 'dangerous', 'respect_in_me', 'benefits_for_me'];
+    public $fillable = ["name", "surname", "middlename", "gender", "birth_date", "date_we_met", "adresses", "contacts", "other_info", "resume", "weaknesses", "avatar_id", "decision", "circle", 'wing', 'weight', 'religion', 'radicalism', 'trust_in_person', 'trust_in_me', 'dangerous', 'respect_in_me', 'benefits_for_me', "potential_contributions", "personal_resources", "vibe", "content_preferences"];
 
 
     public function signs(): HasManyThrough

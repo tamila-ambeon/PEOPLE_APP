@@ -38,6 +38,10 @@
     margin: 0px;
 }
 
+.quill-content img, .ql-editor img {
+    max-width: 300px !important;
+}
+
 .quill-content h1 { font-size: 28px; }
 .quill-content h2 { font-size: 24px; }
 .quill-content h3 { font-size: 20px; }

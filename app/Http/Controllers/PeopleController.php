@@ -85,6 +85,12 @@ class PeopleController extends Controller
         return view('pages.edit_pages.resume', ['person' => $person]);
     }
 
+    public function openAnswer($id, $field)
+    {
+        $person = People::where('id', $id)->first();
+        return view('pages.edit_pages.open_answer', ['person' => $person, 'field' => $field]);
+    }
+
     public function decision($id) 
     {
         $person = People::where('id', $id)->first();

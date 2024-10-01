@@ -33,7 +33,8 @@
 <div class="container mb-5">
     <div class="row pt-3">
 
-@include('parts.person.resume')
+@include('parts.person.open_question', config('people.pages_description.resume'))
+
 @include('parts.person.decision')
 
 <!--- MAIN INFO: --->
@@ -267,161 +268,13 @@
 
 
 
-
-
-
-<!--- CONTACT: --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Контакти та адреси:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Всі способи зв'язатись з людиною. Соціальні мережі.</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-            @if($person->contacts != null) 
-                <div class="ps-3 pe-3 bg-white rounded">
-                @include('forms.quill-content', [
-                    'id' => 'contacts',
-                    'value' => $person->contacts
-                ])
-                </div>
-            @endif
-            <div class="d-flex flex-row-reverse @if($person->contacts != null) border-top @endif ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/contacts">редагувати</a></div> 
-        </div> 
-    </div>
-</div>
-<!--- /CONTACT --->
-
-
-
-
-<!---  --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Що ця людина може мені дати?</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Чим ця людина корисна? До яких ресурсів ця людина має доступ? Що я хочу від неї отримати. Нічого? секс, гроші, повагу? </div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit">редагувати</a>
-            </div> 
-        </div> 
-    </div>
-</div>
-<!--- / --->
-
-
-<!---  --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Що я можу дати:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Кількість добра, яку я можу дати цій людині. Якщо людина робить мені зло, то на нього слід відповідати злом. Лише я вирішую на скільки я готовий вкластись і ні копійкою більше</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit">редагувати</a>
-            </div> 
-        </div> 
-    </div>
-</div>
-<!--- / --->
-
-
-
-
-
-<!---  --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Який вайб випромінює:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Як я почуваю себе в її присутності? Що я відчуваю після спілкування з цією людиною?</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit">редагувати</a>
-            </div> 
-        </div> 
-    </div>
-</div>
-<!--- / --->
-
-
-
-
-<!---  --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Слабкості:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Чим можна надавити, щоб прожати цю людину?</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-            @if($person->weaknesses != null) 
-                <div class="ps-3 pe-3 bg-white rounded">
-                @include('forms.quill-content', [
-                    'id' => 'weaknesses',
-                    'value' => $person->weaknesses
-                ])
-                </div>
-            @endif
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer @if($person->weaknesses != null) border-top @endif">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit/other-info">редагувати</a>
-            </div> 
-        </div> 
-    </div>
-</div>
-<!--- / --->
-
-
-
-
-<!---  --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Який контент споживає:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Хто є кумиром людини? Ким ця людина захоплюється? Що її вражає?</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit">редагувати</a>
-            </div> 
-        </div> 
-    </div>
-</div>
-<!--- / --->
-
-<!---  --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Усі інші відомості про людину:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Що ще я дізнався? Сюди все, що не входить у попередні секції. Не треба робити цю програму надто великою. Тут достатньо всього.</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-            @if($person->other_info != null) 
-                <div class="ps-3 pe-3 bg-white rounded">
-                @include('forms.quill-content', [
-                    'id' => 'other_info',
-                    'value' => $person->other_info
-                ])
-                </div>
-            @endif
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer @if($person->other_info != null) border-top @endif">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit/other-info">редагувати</a>
-            </div> 
-        </div> 
-    </div>
-</div>
-<!--- / --->
-
+@include('parts.person.open_question', config('people.pages_description.contacts'))
+@include('parts.person.open_question', config('people.pages_description.personal_resources'))
+@include('parts.person.open_question', config('people.pages_description.potential_contributions'))
+@include('parts.person.open_question', config('people.pages_description.vibe'))
+@include('parts.person.open_question', config('people.pages_description.weaknesses'))
+@include('parts.person.open_question', config('people.pages_description.content_preferences'))
+@include('parts.person.open_question', config('people.pages_description.other_info'))
 
     <!---------->
     </div>
