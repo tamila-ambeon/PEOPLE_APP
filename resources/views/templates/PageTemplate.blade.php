@@ -7,9 +7,11 @@
         <!--- Form grabber library: ---->
         <link href="{{URL::to('/')}}/form-grabber-bundle.css" rel="stylesheet">
         <script src="{{URL::to('/')}}/form-grabber-bundle.js"></script>
+        <script src="{{URL::to('/')}}/js/jquery.js"></script>
 
         <link href="{{URL::to('/')}}/people-style-bundle.css" rel="stylesheet">
         <link href="{{URL::to('/')}}/fonts/fonts.css" rel="stylesheet">
+        <link rel="icon" href="{{URL::to('/')}}/favicon.ico" type="image/x-icon"/>
 
     </head>
 <body>
@@ -35,10 +37,6 @@
         
                 <li class="nav-item">
                     <a class="nav-link link-light" aria-current="page" href="{{ URL::to('/')}}/people-list">Список людей</a>
-                </li>
-        
-                <li class="nav-item">
-                    <a class="nav-link link-light" href="{{ URL::to('/')}}/signs-list">Ознаки</a>
                 </li>
                 
             </ul>
@@ -75,6 +73,7 @@ searchField.addEventListener("keydown", ({key}) => {
                     <div class="font-plex">Розробка:</div>
                     <div>GitHub Account: <a href="https://github.com/tamila-ambeon" target="_blank" class="text-warning">Tamila Ambeon</a></div>
                     <div>Репозиторій проекту: <a href="https://github.com/tamila-ambeon/PEOPLE_APP" target="_blank" class="text-warning">PEOPLE APP</a></div>
+                    <div>Збірка стилів: <code>npm run dev</code></div>
 
               
                 </div>

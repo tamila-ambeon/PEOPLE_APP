@@ -15,15 +15,16 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9 p-0">
             <div class="bg-white border mt-1">
                 <div class="">
-                    @if($person->resume != null) 
+                    @if($person->$field != null) 
                         @include('forms.quill-content', [
                             'id' => $field,
                             'value' => $person->$field
                         ])  
                     @endif
                 </div>
+                
                 <div class="">
-                    <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer border-top">
+                    <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer @if($person->$field != null) border-top @endif">
                         <a href="{{URL::to("/")}}/person/{{$person->id}}/open_answer/{{$field}}">редагувати</a>
                     </div> 
                 </div>

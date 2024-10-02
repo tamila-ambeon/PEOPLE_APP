@@ -28,244 +28,175 @@
 ])
 <!-- /TOP MENU --->
 
+@include('forms.hidden', [
+    'id' => "person_id", 
+    'value' => $person->id
+])
+
 
 <!------------------->
 <div class="container mb-5">
     <div class="row pt-3">
 
 @include('parts.person.open_question', config('people.pages_description.resume'))
-
 @include('parts.person.decision')
-
-<!--- MAIN INFO: --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Основна інформація:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Загальні відомості</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-            <div class="p-2">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6">
-                            <table class="table font-size-13">
-                                <tbody>
-                                <tr>
-                                    <td class="font-roboto-bold">ПІБ</td><td>{{$person->surname}} {{$person->name}} {{$person->middlename}}</td>
-                                </tr>  
-                                <tr>
-                                    <td class="font-roboto-bold">Стать:</td><td>ж/ч</td>
-                                </tr>                  
-                                <tr><td class="font-roboto-bold">Дата знайомства:</td><td>{{$person->date_we_met}} (час)</td></tr>
-                                <tr><td class="font-roboto-bold">Дата народження:</td><td>{{$person->birth_date}} (вік)</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6">
-                            <table class="table font-size-13">
-                                <tbody>
-                                <tr>
-                                    <td class="font-roboto-bold">
-                                        <div class="d-flex align-items-center">Вага у суспільстві</div>
-                                    </td>
-                                    <td>
-                                        @include('forms.select', [
-                                            'id' => "weight",  
-                                            'items' => config('people.weight'),
-                                            "disabled" => true,
-                                            'selected_value' => $person->weight
-                                        ])
-                                    </td>
-                                </tr>                     
-                                <tr><td class="font-roboto-bold">Релігійні погляди:</td>
-                                    <td>
-                                        @include('forms.select', [
-                                            'id' => "religion",  
-                                            'items' => config('people.religion'),
-                                            "disabled" => true,
-                                            'selected_value' => $person->religion
-                                        ])  
-                                    </td>
-                                </tr>
-                                <tr><td class="font-roboto-bold">Круг:</td>
-                                    <td>
-                                        @include('forms.select', [
-                                            'id' => "circle",  
-                                            'items' => config('people.circle'),
-                                            "disabled" => true,
-                                            'selected_value' => $person->circle
-                                        ])
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+@include('parts.person.select_answer', ['field' => 'circle'])
 
 
 
 
+
+<!--- BLOCK: --->
+<div class="container mt-3 mb-3">
+    <div class="row">
+
+        <!--- Мета: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+            <div class="">
+                <div class="font-roboto-bold font-size-19">Основна інформація:</div>
+                <div class="font-roboto-light font-size-12 fc-secondary mb-1">Загальні відомості</div>
             </div>
-            <div class="d-flex flex-row-reverse border-top ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/contacts">редагувати</a></div> 
-        </div> 
-    </div>
-</div>
-<!--- /MAIN INFO --->
+        </div>
+        <!--- /Мета --->
 
-
-
-<!--- : --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Політичні погляди:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary">Крило і радикальність</div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-                
-                <div class="d-flex flex-row">
-                    <div class="d-flex flex-row p-1">
-                        <div class="font-size-13">
-                            @include('forms.select', [
-                                'id' => "wing",  
-                                'items' => config('people.wing'),
-                                "disabled" => true,
-                                'selected_value' => $person->wing
-                            ])
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row p-1">
-                        <div class="font-size-13">
-                            @include('forms.select', [
-                                'id' => "radicalism",  
-                                'items' => config('people.radicalism'),
-                                "disabled" => true,
-                                'selected_value' => $person->radicalism
-                            ])
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white border-top d-flex ps-2 pe-2 font-size-12">
-                    Треба знати політичні погляди ВСІХ оточуючих людей. Щоб знати хто мене оточує. 
-                    <br>І можливо ще де вони перебувають (територіально, категорично), щоб знати куди йти, щоб знайти своїх.
-                    <br>Politics is reflection of values.
-                    <br>Build relations які грунтуються на спільних values.
-                </div>
-                <div class="bg-white border-top d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                    <a href="{{URL::to("/")}}/person/{{$person->id}}/edit/">редагувати</a>
-                </div> 
-            </div>
+        <!--- Контент: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9 p-0">
+            <table class="table font-size-13 border m-0">
+                <tbody>
+                    <tr>
+                        <td class="font-roboto-bold"><div class="d-flex align-items-center">ПІБ:</div></td>
+                        <td class="bg-light border-start">{{$person->surname}} {{$person->name}} {{$person->middlename}}</td>
+                    </tr>
+                    <tr>
+                        <td class="font-roboto-bold"><div class="d-flex align-items-center">Стать:</div></td>
+                        <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'gender'])</td>
+                    </tr>
+                    <tr>
+                        <td class="font-roboto-bold"><div class="d-flex align-items-center">Дата народження:</div></td>
+                        <td class="bg-light border-start">{{$person->birth_date}} (вік)</td>
+                    </tr>
+                    <tr>
+                        <td class="font-roboto-bold"><div class="d-flex align-items-center">Дата знайомства:</div></td>
+                        <td class="bg-light border-start">{{$person->date_we_met}} (час)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/contacts">редагувати</a></div> 
+        </div>
+        <!--- /Контент --->
 
     </div> 
 </div>
-<!--- / --->
+<!--- /BLOCK --->
 
 
 
-<!--- : --->
-<div class="d-flex mt-2 mb-2">
-    <div class="fixed-sidebar-200">
-        <div class="font-roboto-bold font-size-19">Довіра, безпека, повага і користь:</div>
-        <div class="font-roboto-light font-size-12 fc-secondary"></div>
-    </div>
-    <div class="grow-content">
-        <div class="bg-white border">
-                
-                <div class="d-flex flex-row">
-                    <table class="table font-size-13">
-                        <tbody>
-                        <tr>
-                            <td class="font-roboto-bold">
-                                <div class="d-flex align-items-center">Чи довіряю я цій людині:</div>
-                            </td>
-                            <td>
-                                @include('forms.select', [
-                                    'id' => "trust_in_person",  
-                                    'items' => config('people.trust_in_person'),
-                                    "disabled" => true,
-                                    'selected_value' => $person->trust_in_person
-                                ])
-                            </td>
-                        </tr>                     
-                        <tr><td class="font-roboto-bold">
-                            Довіра до мене:
-                            <br><span class="font-roboto-light font-size-12 fc-secondary">Чи відчуваю Я, що людина мені довіряє?</span>
+<!--- BLOCK: --->
+<div class="container mt-3 mb-3">
+    <div class="row">
 
-                        </td>
-                            <td>
-                                @include('forms.select', [
-                                    'id' => "trust_in_me",  
-                                    'items' => config('people.trust_in_me'),
-                                    "disabled" => true,
-                                    'selected_value' => $person->trust_in_me
-                                ]) 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="font-roboto-bold">
-                                <div class="d-flex align-items-center">Що показує історія стосунків:</div>
-                            </td>
-                            <td>к-ть: {{$person->history_count}}, якість: {{$person->relationship_quality}}</td>
-                        </tr> 
-                        <tr><td class="font-roboto-bold">На скільки ця людина є небезпечною для мене:</td>
-                            <td>
-                                @include('forms.select', [
-                                    'id' => "dangerous",  
-                                    'items' =>  config('people.dangerous'),
-                                    "disabled" => true,
-                                    'selected_value' => $person->dangerous
-                                ]) 
-                            </td>
-                        </tr>
-
-                        <tr><td class="font-roboto-bold">
-                            Повага до мене:
-                            <br><span class="font-roboto-light font-size-12 fc-secondary">Чи відчуваю я повагу до себе?</span>
-
-                        </td>
-                            <td>
-                                @include('forms.select', [
-                                    'id' => "respect_in_me",  
-                                    'items' => config('people.respect_in_me'),
-                                    "disabled" => true,
-                                    'selected_value' => $person->respect_in_me
-                                ]) 
-                            </td>
-                        </tr>
-                        
-                        <tr><td class="font-roboto-bold">
-                            Користь для мене:
-                            <br><span class="font-roboto-light font-size-12 fc-secondary">Чим більше користі приносить, тим більше значення має слово цієї людини. <br>Якщо ця людина для мене не є корисною, то навіщо я витрачаю на неї час?</span>
-
-                        </td>
-                            <td>
-                                @include('forms.select', [
-                                    'id' => "benefits_for_me",  
-                                    'items' => config('people.benefits_for_me'),
-                                    "disabled" => true,
-                                    'selected_value' => $person->benefits_for_me
-                                ]) 
-                            </td>
-                        </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="bg-white border-top d-flex ps-2 pe-2 font-size-12">
-                    Чи надійна ці людина? Чи можна на неї покластись?
-                </div>
-                <div class="bg-white border-top d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer">
-                    <a href="{{URL::to("/")}}/person/{{$person->id}}/edit/">редагувати</a>
-                </div> 
+        <!--- Мета: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+            <div class="">
+                <div class="font-roboto-bold font-size-19">Політичні погляди:</div>
+                <div class="font-roboto-light font-size-12 fc-secondary mb-1">Крило і радикальність</div>
             </div>
-    </div>
-</div>
-<!--- / --->
+        </div>
+        <!--- /Мета --->
 
+        <!--- Контент: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9 p-0 border">
+            <div class="d-flex flex-row bg-light">
+                <div class="d-flex flex-row p-1">
+                    <div class="font-size-13">
+                        @include('parts.person.select_with_autosave', ['field' => "wing"])
+                    </div>
+                </div>
+                <div class="d-flex flex-row p-1">
+                    <div class="font-size-13">
+                        @include('parts.person.select_with_autosave', ['field' => "radicalism"])
+                    </div>
+                </div>
+                
+            </div>
+            <div class="bg-white border-top d-flex ps-2 pe-2 font-size-12 pt-1 pb-1">
+                Політика це відображення людських цінностей.<br>Будуй стосунки, які грунтуються на спільних цінностях.
+            </div>
+        </div>
+        <!--- /Контент --->
+
+    </div> 
+</div>
+<!--- /BLOCK --->
+
+
+@include('parts.person.select_answer', ['field' => 'religion'])
+@include('parts.person.select_answer', ['field' => 'weight'])
+
+
+
+<!--- BLOCK: --->
+<div class="container mt-3 mb-3">
+    <div class="row">
+
+        <!--- Мета: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+            <div class="">
+                <div class="font-roboto-bold font-size-19">Довіра, безпека, повага і користь:</div>
+                <div class="font-roboto-light font-size-12 fc-secondary mb-1">Чи надійна ці людина? Чи можна на неї покластись?</div>
+            </div>
+        </div>
+        <!--- /Мета --->
+
+        <!--- Контент: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9 p-0">
+            <table class="table font-size-13 border">
+                <tbody>
+                <tr>
+                    <td class="font-roboto-bold"><div class="d-flex align-items-center">Чи довіряю я цій людині:</div></td>
+                    <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'trust_in_person'])</td>
+                </tr>                     
+                <tr>
+                    <td class="font-roboto-bold">
+                        Довіра до мене:
+                        <br><span class="font-roboto-light font-size-12 fc-secondary">Чи відчуваю Я, що людина мені довіряє?</span>
+                    </td>
+                    <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'trust_in_me'])</td>
+                </tr>
+                <tr>
+                    <td class="font-roboto-bold">
+                        <div class="d-flex align-items-center">Що показує історія стосунків:</div>
+                    </td>
+                    <td>к-ть: {{$person->history_count}}, якість: {{$person->relationship_quality}}</td>
+                </tr>
+
+                <tr>
+                    <td class="font-roboto-bold">На скільки ця людина є небезпечною для мене:</td>
+                    <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'dangerous'])</td>
+                </tr>
+
+                <tr>
+                    <td class="font-roboto-bold">
+                        Повага до мене: <br><span class="font-roboto-light font-size-12 fc-secondary">Чи відчуваю я повагу до себе?</span>
+                    </td>
+                    <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'respect_in_me'])</td>
+                </tr>
+                
+                <tr>
+                    <td class="font-roboto-bold">
+                        Користь для мене:
+                        <br><span class="font-roboto-light font-size-12 fc-secondary">Чим більше користі приносить, тим більше значення має слово цієї людини. <br>Якщо ця людина для мене не є корисною, то навіщо я витрачаю на неї час?</span>
+                    </td>
+                    <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'benefits_for_me'])</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--- /Контент --->
+
+    </div> 
+</div>
+<!--- /BLOCK --->
 
 
 @include('parts.person.open_question', config('people.pages_description.contacts'))
@@ -281,6 +212,53 @@
 </div>
 <!------------------->
     
+<script>
+$(document).ready(function() {
+  // Вибираємо всі селекти (можете уточнити селектор, якщо їх багато)
+    $('select').change(function() {
+
+        // Отримуємо ID селекту
+        let selectId = $(this).attr('id');
+
+        // Отримуємо нове значення
+        let newValue = $(this).val();
+
+        // Робимо щось із отриманими даними, наприклад, виводимо їх в консоль
+        console.log('Нове значення:', selectId, newValue, $(this).find('option:selected').text());
+
+        // Блокуємо селект на 1 секунду
+        $(this).prop('disabled', true);
+        updateSelect(this, selectId, newValue)
+
+    });
+});
+
+
+function updateSelect(select, field, value)
+{
+   let data = {}
+        data["id"] = $('#person_id').val()
+        data[field] = value
+        console.log("data", data)
+
+    $.ajax({
+        type: "PATCH",
+        url: document.getElementsByTagName("base")[0].href + "api/main_info",
+        data: data,
+        success: function(response) {
+            // Код, який виконується після успішної відповіді від сервера
+            console.log(response);
+            $(select).prop('disabled', false);
+        },
+        error: function(error) {
+            // Код, який виконується при виникненні помилки
+            console.error(error);
+        }
+    });
+}
+
+</script>
+
 
 @endsection
 @else 

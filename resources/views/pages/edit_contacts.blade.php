@@ -104,81 +104,10 @@
     </div>
 
 
-    @include("templates.person.section-title", [ 'left' => 'Статус:', 'right' => ''])
-    <div class="row ps-2 pe-2">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-            <div class="">Відстань Х:</div>
-            <div class="">
-                @include('forms.number', [
-                    'id' => "range_x", //'class' => '',
-                    'placeholder' => "X", 
-                    "min" => "1", "max" => "1000", "step" => "1",
-                    "disabled" => false,
-                    'value' => $person->range_x
-                ])
-            </div>
-            <div class="c">               
-                @if($person->range_x >= 0 and $person->range_x <= 100) Близька людина - та, про кого треба думати
-                @elseif($person->range_x > 100 and $person->range_x <= 400) Дальня людина - та, про кого я змушений думати
-                @elseif($person->range_x > 400) Ворожа людина - та, кого слід уникати, з ким не можна мати справи, щоб не постраждати 
-                @else 
-                @endif
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-            <div class="">Відстань Y:</div>
-            <div class="">
-            @include('forms.number', [
-                'id' => "range_y", //'class' => '',
-                'placeholder' => "Y", 
-                "min" => "1", "max" => "1000", "step" => "1",
-                "disabled" => false,
-                'value' => $person->range_y
-            ])
-            </div>
-            <div class="c">  
-                @if($person->range_y >= 0 and $person->range_y <= 100) Важлива людина
-                @elseif($person->range_y > 100 and $person->range_y <= 400) Середня важливість
-                @elseif($person->range_y > 400) Незначна людина
-                @else 
-                @endif 
-            </div>           
-        </div>
-
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-2">
-            <div class="border-top pt-2">               
-                <= 100 Близька людина<br>
-                > 100 <= 400 Дальня людина<br>
-                > 400 Ворожа людина<br>
-            </div>
-         </div>
-
-    </div>
-
-
 </div>
 </div>  
 
 
-    @include("templates.person.section-title", [ 'left' => 'Контакти:', 'right' => ''])
-    <div class="editor mb-2 bg-white">
-        @include('forms.text-editor', [
-            'id' => "contacts", 
-            "readonly" => false, 
-            'value' => $person->contacts
-        ])
-    </div>    
-    
-
-    @include("templates.person.section-title", [ 'left' => 'Адреси:', 'right' => ''])
-    <div class="editor mb-2 bg-white">
-        @include('forms.text-editor', [
-            'id' => "adresses", 
-            "readonly" => false, 
-            'value' => $person->adresses
-        ])
-    </div>
 
     <div class="button mb-2">
         <div class="d-flex flex-row-reverse">

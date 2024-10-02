@@ -12,7 +12,7 @@ try {
         "debug": true,
         'button_id': "save_contacts",
         'switch_button_id': "handle_request_contacts",
-        'input_ids': ["id", "gender", "date_we_met", "birth_date", "contacts", "adresses", "name", "surname", "middlename", "range_x", "range_y"],
+        'input_ids': ["id", "date_we_met", "birth_date", "name", "surname", "middlename"],
         'method': "PATCH",
         'endpoint': document.getElementsByTagName("base")[0].href + "api/main_info",
     })
