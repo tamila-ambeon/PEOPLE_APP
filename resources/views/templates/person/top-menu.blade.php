@@ -11,7 +11,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">Історія стосунків 
+        <a class="nav-link" href="{{URL::to('/')}}/person/{{$person->id}}/stories">Історія стосунків 
             <span class="badge text-bg-success">{{$person->history_count}}</span>
         </a>
     </li>

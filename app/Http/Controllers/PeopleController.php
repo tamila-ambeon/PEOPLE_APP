@@ -63,42 +63,12 @@ class PeopleController extends Controller
 
         return view('pages.person.view', ['person' => $person]);
     }
- /*   
-    public function mainInfo($id) 
-    {
-        $person = People::where('id', $id)->first();
-        
-        return view('edit_main_info', ['person' => $person]);
-    }
 
-    public function otherInfo($id) 
-    {
-        $person = People::where('id', $id)->first();
-        
-        return view('pages.edit_other_info', ['person' => $person]);
-    }
-
-    public function photo_and_resume($id) 
-    {
-        $person = People::where('id', $id)->first();
-        
-        return view('pages.edit_pages.resume', ['person' => $person]);
-    }
-*/
     public function openAnswer($id, $field)
     {
         $person = People::where('id', $id)->first();
         return view('parts.person.edit_open_question', ['person' => $person, 'field' => $field]);
     }
-
-    /*
-    public function decision($id) 
-    {
-        $person = People::where('id', $id)->first();
-        
-        return view('pages.edit_pages.decision', ['person' => $person]);
-    }
-*/
     
     public function contacts($id) 
     {
@@ -106,33 +76,7 @@ class PeopleController extends Controller
         
         return view('pages.person.edit', ['person' => $person]);
     }
-/*
-    public function shortcuts($id) 
-    {
-        $person = People::where('id', $id)->first();
-        $signs = Sign::orderBy('title_men', 'asc')->get();
 
-        $genderSign = [];
-
-        if($person) {
-            foreach($signs as $sign) {
-                $genderSign[0][$sign->id] = $sign->title_women;
-                $genderSign[1][$sign->id] = $sign->title_men;
-            }
-        } else {
-            dd('Person not found.');
-        }
-        $signIDs = PeopleSign::where('people_id', $person->id)->get(['sign_id'])->pluck('sign_id')->toArray();
-        
-        return view('pages.shortcuts', [
-            'person' => $person, 
-            'signs' => $signs, 
-            'genderSign' => $genderSign,
-            'checked_signs' => $signIDs
-
-        ]);
-    }
-*/
     public function photographs($id) 
     {
         $person = People::where('id', $id)->first();
@@ -147,22 +91,22 @@ class PeopleController extends Controller
         return view('pages.weaknesses', ['person' => $person]);
     }
     
-    public function history($id) 
+    public function stories($id) 
     {
         $histories = null;
         $person = People::where('id', $id)->first();
         if($person != null) {
-            $histories = History::where('people_id', $person->id)->orderBy("date", "desc")->paginate(10);
+            $histories = History::where('people_id', $person->id)->orderBy("date", "desc")->orderBy("id", "desc")->paginate(10);
         }
         
-        return view('pages.history', ['person' => $person, 'histories' => $histories]);
+        return view('pages.history.stories', ['person' => $person, 'histories' => $histories]);
     }
 
     public function new_history($id) 
     {
         $person = People::where('id', $id)->first();
         
-        return view('pages.new_history', ['person' => $person]);
+        return view('pages.history.new_history', ['person' => $person]);
     }
 
     public function edit_history($id, $historyId) 
@@ -170,7 +114,7 @@ class PeopleController extends Controller
         $person = People::where('id', $id)->first();
         $history = History::where('id', $historyId)->first();
 
-        return view('pages.edit_history', ['person' => $person, "history" => $history]);
+        return view('pages.history.edit_history', ['person' => $person, "history" => $history]);
     }
     
 

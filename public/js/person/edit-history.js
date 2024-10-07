@@ -24,7 +24,7 @@ class DeleteHistory extends FormGrabber
 {
     beforeSend() {}
     onSuccess(json) {
-        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/histories"
+        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/stories"
     }
     onError(error) {}
 }

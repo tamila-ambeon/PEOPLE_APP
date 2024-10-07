@@ -15,7 +15,7 @@
     ["title" => "Головна", "url" => URL::to('/')],
     ["title" => "Список людей", "url" => URL::to('/') . '/people-list'],
     ["title" => $person->surname ." ". $person->name ." ". $person->middlename, "url" => URL::to('/') . '/person/' . $person->id],
-    ["title" => "Вся історія стосунків", "url" => URL::to('/') . '/person/' . $person->id . '/histories'],
+    ["title" => "Вся історія стосунків", "url" => URL::to('/') . '/person/' . $person->id . '/stories'],
     ["title" => "Додати нову історію", "url" => null],
 ]])
 <!--------- /BREADCRUMBS ---------->
@@ -23,7 +23,7 @@
 
 <!-- TOP MENU: --->
 @include('templates.person.top-menu', [
-    "current" => URL::to('/') . "/person/" . $person->id . '/histories', 
+    "current" => URL::to('/') . "/person/" . $person->id . '/stories', 
     "person" => $person
 ])
 <!-- /TOP MENU --->

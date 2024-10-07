@@ -18,9 +18,10 @@ Route::get('person/{id}/open_answer/{field}', [PeopleController::class, 'openAns
 
 
 //Route::get('person/{id}/edit/signs', [PeopleController::class, 'shortcuts']);
+Route::get('person/{id}/stories', [PeopleController::class, 'stories']);
 Route::get('person/{id}/edit/histories/{history_id}', [PeopleController::class, 'edit_history']);
 Route::get('person/{id}/photographs', [PeopleController::class, 'photographs']);
-Route::get('person/{id}/histories', [PeopleController::class, 'history']);
+
 Route::get('person/{id}/histories/new', [PeopleController::class, 'new_history']);
 //Route::get('person/{id}/weaknesses', [PeopleController::class, 'weaknesses']);
 

@@ -3,7 +3,7 @@ class CreateHistory extends FormGrabber
     beforeSend() {}
     onSuccess(json) {
         //console.log("json", json)
-        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/histories"
+        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/stories"
     }
     onError(error) {}
 }
