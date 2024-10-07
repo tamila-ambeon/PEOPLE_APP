@@ -33,16 +33,9 @@ Route::post('history', [HistoryController::class, 'create']);
 Route::patch('history', [HistoryController::class, 'patch']);
 Route::delete('history', [HistoryController::class, 'delete']);
 
-Route::post('sign', [SignController::class, 'create']);
-Route::patch('sign', [SignController::class, 'patch']);
-Route::post('person/signs', [SignController::class, 'savePersonSigns']);
-
-
-
 Route::post('files', [FileController::class, 'upload']);
 Route::patch('files', [FileController::class, 'update']);
 Route::delete('files', [FileController::class, 'delete']);
-
 
 Route::get('files_size', [BackupController::class, 'filesSize']);
 Route::get('backup', [BackupController::class, 'backup']);

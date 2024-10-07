@@ -81,9 +81,22 @@ body {
     
 }
 
+.people-nav a {
+    color: #ffe000;
+}
+
+.people-nav a:hover {
+    color: #e3a31b;
+}
+
+.people-nav a:focus {
+    color: #e3a31b;
+}
+
+/*
 .nav-link:hover {
     background-color: #2f3238;
-}
+}*/
 
 
 .pagination-outer {

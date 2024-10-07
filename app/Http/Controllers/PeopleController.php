@@ -61,9 +61,9 @@ class PeopleController extends Controller
     {
         $person = People::where('id', $id)->first();
 
-        return view('pages.person', ['person' => $person]);
+        return view('pages.person.view', ['person' => $person]);
     }
-    
+ /*   
     public function mainInfo($id) 
     {
         $person = People::where('id', $id)->first();
@@ -84,28 +84,29 @@ class PeopleController extends Controller
         
         return view('pages.edit_pages.resume', ['person' => $person]);
     }
-
+*/
     public function openAnswer($id, $field)
     {
         $person = People::where('id', $id)->first();
-        return view('pages.edit_pages.open_answer', ['person' => $person, 'field' => $field]);
+        return view('parts.person.edit_open_question', ['person' => $person, 'field' => $field]);
     }
 
+    /*
     public function decision($id) 
     {
         $person = People::where('id', $id)->first();
         
         return view('pages.edit_pages.decision', ['person' => $person]);
     }
-    
+*/
     
     public function contacts($id) 
     {
         $person = People::where('id', $id)->first();
         
-        return view('pages.edit_contacts', ['person' => $person]);
+        return view('pages.person.edit', ['person' => $person]);
     }
-
+/*
     public function shortcuts($id) 
     {
         $person = People::where('id', $id)->first();
@@ -131,7 +132,7 @@ class PeopleController extends Controller
 
         ]);
     }
-
+*/
     public function photographs($id) 
     {
         $person = People::where('id', $id)->first();

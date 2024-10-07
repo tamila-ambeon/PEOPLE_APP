@@ -35,7 +35,7 @@
 <script>
     // Редірект при кліку на кнопку створення:
     document.getElementById("go-to-create-person").onclick = function (event) {
-        location.href = "{{URL::to('/')}}/create-person"
+        location.href = "{{URL::to('/')}}/person/create"
     }
 </script>
 

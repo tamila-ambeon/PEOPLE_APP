@@ -38,8 +38,10 @@
 <div class="container mb-5">
     <div class="row pt-3">
 
-@include('parts.person.open_question', config('people.pages_description.resume'))
-@include('parts.person.decision')
+@include('parts.person.view_open_question', config('people.pages_description.resume'))
+
+
+@include('parts.person.select_answer', ['field' => 'decision'])
 @include('parts.person.select_answer', ['field' => 'circle'])
 
 
@@ -81,7 +83,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit/contacts">редагувати</a></div> 
+            <div class="d-flex flex-row-reverse ps-2 pe-2 font-size-14 edit-button-outer"><a href="{{URL::to("/")}}/person/{{$person->id}}/edit">редагувати</a></div> 
         </div>
         <!--- /Контент --->
 
@@ -199,13 +201,13 @@
 <!--- /BLOCK --->
 
 
-@include('parts.person.open_question', config('people.pages_description.contacts'))
-@include('parts.person.open_question', config('people.pages_description.personal_resources'))
-@include('parts.person.open_question', config('people.pages_description.potential_contributions'))
-@include('parts.person.open_question', config('people.pages_description.vibe'))
-@include('parts.person.open_question', config('people.pages_description.weaknesses'))
-@include('parts.person.open_question', config('people.pages_description.content_preferences'))
-@include('parts.person.open_question', config('people.pages_description.other_info'))
+@include('parts.person.view_open_question', config('people.pages_description.contacts'))
+@include('parts.person.view_open_question', config('people.pages_description.personal_resources'))
+@include('parts.person.view_open_question', config('people.pages_description.potential_contributions'))
+@include('parts.person.view_open_question', config('people.pages_description.vibe'))
+@include('parts.person.view_open_question', config('people.pages_description.weaknesses'))
+@include('parts.person.view_open_question', config('people.pages_description.content_preferences'))
+@include('parts.person.view_open_question', config('people.pages_description.other_info'))
 
     <!---------->
     </div>

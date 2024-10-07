@@ -1,33 +1,19 @@
-<div id="top-menu">
+<ul class="people-nav nav nav-pills nav-fill border-bottom font-roboto-bold font-size-14 pt-1" style="background: #201e1c;">
 
-    @if( (URL::to('/') . "/person/" . $person->id) == $current)
-        <div class="top-menu-item-active">Основна інформація</div>
-    @else 
-        <div class="top-menu-item">
-            <a href="{{URL::to('/')}}/person/{{$person->id}}">Основна інформація</a>
-        </div>  
-    @endif
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{{URL::to('/')}}/person/{{$person->id}}">Основна інформація</a>
+    </li>
 
-    
-    @if( (URL::to('/') . "/person/" . $person->id . "/photographs") == $current)
-        <div class="top-menu-item-active">
-            Фотографії ({{$person->photos_count}})
-            </div>
-    @else 
-        <div class="top-menu-item">
-            <a href="{{URL::to('/')}}/person/{{$person->id}}/photographs">Фотографії ({{$person->photos_count}})</a>
-        </div>
-    @endif
-  
+    <li class="nav-item">
+        <a class="nav-link" href="#">Фотографії 
+            <span class="badge text-bg-success">{{$person->photos_count}}</span>
+        </a>
+    </li>
 
-    @if( (URL::to('/') . "/person/" . $person->id) . "/histories" == $current)
-        <div class="top-menu-item-active">
-            Історія стосунків ({{$person->history_count}}, {{$person->relationship_quality}})
-        </div>
-    @else 
-        <div class="top-menu-item">
-            <a href="{{URL::to('/')}}/person/{{$person->id}}/histories">Історія стосунків ({{$person->history_count}}, {{$person->relationship_quality}})</a>
-        </div>
-    @endif
+    <li class="nav-item">
+        <a class="nav-link" href="#">Історія стосунків 
+            <span class="badge text-bg-success">{{$person->history_count}}</span>
+        </a>
+    </li>
 
-</div>
+</ul>

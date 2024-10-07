@@ -18,7 +18,7 @@
 
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto/Roboto-Bold.ttf') format('truetype');
+    src: url('Roboto/Roboto.ttf') format('truetype');
 } 
 
 .font-roboto {
@@ -31,7 +31,7 @@
 } 
 
 .font-roboto-bold {
-    font-family: 'Roboto';
+    font-family: 'Roboto-Bold';
 }
 
 .font-size-11 { font-size: 11px; }

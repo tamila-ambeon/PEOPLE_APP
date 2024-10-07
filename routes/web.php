@@ -7,34 +7,26 @@ use App\Http\Controllers\SignController;
 Route::get('/', [PeopleController::class, 'index']);
 Route::get('search', [PeopleController::class, 'search']);
 Route::get('people-list', [PeopleController::class, 'list']);
-Route::get('create-person', function () {   return view('pages.create_person'); });
-Route::get('person/{id}', [PeopleController::class, 'person']);
-Route::get('person/{id}/edit/main-info', [PeopleController::class, 'mainInfo']);
-Route::get('person/{id}/edit/other-info', [PeopleController::class, 'otherInfo']);
 
+// Види PERSON:
+Route::get('person/create', function () {   return view('pages.person.create'); });
+Route::get('person/{id}', [PeopleController::class, 'person']);
+Route::get('person/{id}/edit', [PeopleController::class, 'contacts']);
 
 Route::get('person/{id}/open_answer/{field}', [PeopleController::class, 'openAnswer']);
-Route::get('person/{id}/resume', [PeopleController::class, 'photo_and_resume']);
-Route::get('person/{id}/decision', [PeopleController::class, 'decision']);
 
-Route::get('person/{id}/edit/contacts', [PeopleController::class, 'contacts']);
-Route::get('person/{id}/edit/signs', [PeopleController::class, 'shortcuts']);
+
+
+//Route::get('person/{id}/edit/signs', [PeopleController::class, 'shortcuts']);
 Route::get('person/{id}/edit/histories/{history_id}', [PeopleController::class, 'edit_history']);
 Route::get('person/{id}/photographs', [PeopleController::class, 'photographs']);
 Route::get('person/{id}/histories', [PeopleController::class, 'history']);
 Route::get('person/{id}/histories/new', [PeopleController::class, 'new_history']);
-Route::get('person/{id}/weaknesses', [PeopleController::class, 'weaknesses']);
+//Route::get('person/{id}/weaknesses', [PeopleController::class, 'weaknesses']);
 
 Route::get('person/{id}/photographs', [PeopleController::class, 'photos']);
 Route::get('person/{id}/upload_photos', [PeopleController::class, 'upload_photos']);
 Route::get('person/{id}/photographs/{photo_id}/edit', [PeopleController::class, 'photo_edit']);
-
-
-// Ознаки:
-Route::get('signs-list', [SignController::class, 'list']);
-Route::get('create-sign', function () {   return view('pages.create_sign'); });
-Route::get('sign/{id}', [SignController::class, 'sign']);
-Route::get('sign/{id}/edit', [SignController::class, 'edit']);
 
 // Файли:
 Route::get('files', [SignController::class, 'list']); // А нащо цей роут???
