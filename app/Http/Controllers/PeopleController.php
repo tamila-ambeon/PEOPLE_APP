@@ -120,7 +120,7 @@ class PeopleController extends Controller
         $files = null;
         $person = People::where('id', $id)->first();
         if($person != null) {
-            $files = PersonFile::where('people_id', $person->id)->orderBy("id", "desc")->paginate(10);
+            $files = PersonFile::where('file_type', 'photographs')->where('people_id', $person->id)->orderBy("id", "desc")->paginate(10);
         }
         
         return view('pages.photos.view', ['person' => $person, 'files' => $files]);
@@ -130,7 +130,7 @@ class PeopleController extends Controller
     {
         $person = People::where('id', $id)->first();
         
-        return view('pages.photos.upload_person_photo', ['person' => $person]);
+        return view('pages.photos.create', ['person' => $person]);
     }
 
     public function photo_view($id, $file_id) 
@@ -160,7 +160,7 @@ class PeopleController extends Controller
             return "Photo not exist!";
         }
 
-        return view('pages.photos.photo_edit', ['person' => $person, 'file' => $file]);
+        return view('pages.photos.edit', ['person' => $person, 'file' => $file]);
     }
     
     

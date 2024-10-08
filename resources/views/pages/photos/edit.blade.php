@@ -48,10 +48,9 @@
 
         <!--- Мета: --->
         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
-            <div class="image-outer">
+            <div class="image-container bg-white border">
                 <a href="{{URL::to('/')}}/{{ $file->path }}" target="_blank"><img src="{{URL::to('/')}}/{{ $file->path }}" width="130px;"></a>
             </div>
-
         </div>
         <!--- /Мета --->
 
@@ -126,6 +125,7 @@
         
             </div>
 
+            <div class="font-size-12 font-roboto-light font-size-12 fc-secondary mb-1">Після видалення допис в базі залишиться, а файл буде знищений.</div>
         </div>
         <!--- /Контент --->
 
