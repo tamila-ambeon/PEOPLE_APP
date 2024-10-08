@@ -140,6 +140,10 @@ class PeopleController extends Controller
         if($person != null) {
             $file = PersonFile::where('id', $file_id)->where('people_id', $person->id)->first();
         }
+
+        if($file == null) {
+            return "Photo not exist!";
+        }
         
         return view('pages.photo_view', ['person' => $person, 'file' => $file]);
     }
@@ -151,6 +155,11 @@ class PeopleController extends Controller
         if($person != null) {
             $file = PersonFile::where('id', $file_id)->where('people_id', $person->id)->first();
         }
+
+        if($file == null) {
+            return "Photo not exist!";
+        }
+
         return view('pages.photos.photo_edit', ['person' => $person, 'file' => $file]);
     }
     

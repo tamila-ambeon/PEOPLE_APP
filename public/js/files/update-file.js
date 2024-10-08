@@ -26,7 +26,7 @@ class DeleteFile extends FormGrabber
 {
     beforeSend() {}
     onSuccess(json) {
-        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/photographs/"
+        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/photos/"
     }
     onError(error) {}
 }
