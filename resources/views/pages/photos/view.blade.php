@@ -48,12 +48,12 @@
     <script>
         // Редірект при кліку на кнопку створення:
         document.getElementById("add_new").onclick = function (event) {
-            location.href = "{{URL::to('/')}}/person/{{$person->id}}/upload_photos"
+            location.href = "{{URL::to('/')}}/person/{{$person->id}}/photos/create"
         }
     </script>
     </div>
 
-    @include('templates.person.photographs-list', ['files' => $files])
+    @include('pages.photos.list-template', ['files' => $files])
 
 </div>
 <!--- /CONTENT ---->

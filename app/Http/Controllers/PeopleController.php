@@ -77,13 +77,6 @@ class PeopleController extends Controller
         return view('pages.person.edit', ['person' => $person]);
     }
 
-    public function photographs($id) 
-    {
-        $person = People::where('id', $id)->first();
-        
-        return view('pages.photographs', ['person' => $person]);
-    }
-
     public function weaknesses($id) 
     {
         $person = People::where('id', $id)->first();
@@ -118,6 +111,10 @@ class PeopleController extends Controller
     }
     
 
+
+
+
+
     public function photos($id) 
     {
         $files = null;
@@ -126,14 +123,14 @@ class PeopleController extends Controller
             $files = PersonFile::where('people_id', $person->id)->orderBy("id", "desc")->paginate(10);
         }
         
-        return view('pages.person_photos', ['person' => $person, 'files' => $files]);
+        return view('pages.photos.view', ['person' => $person, 'files' => $files]);
     }
 
     public function upload_photos($id) 
     {
         $person = People::where('id', $id)->first();
         
-        return view('pages.upload_person_photo', ['person' => $person]);
+        return view('pages.photos.upload_person_photo', ['person' => $person]);
     }
 
     public function photo_view($id, $file_id) 
@@ -154,7 +151,7 @@ class PeopleController extends Controller
         if($person != null) {
             $file = PersonFile::where('id', $file_id)->where('people_id', $person->id)->first();
         }
-        return view('pages.photo_edit', ['person' => $person, 'file' => $file]);
+        return view('pages.photos.photo_edit', ['person' => $person, 'file' => $file]);
     }
     
     

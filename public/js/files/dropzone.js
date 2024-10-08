@@ -36,6 +36,7 @@ Dropzone.options.myGreatDropzone = { // camelized version of the `id`
     parallelUploads: 11,
     acceptedFiles: 'image/*',
     autoProcessQueue: false,
+    dictDefaultMessage: "Перетягни файли сюди",
     init: function () {
         let myDropzone = this;
 

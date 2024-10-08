@@ -37,6 +37,7 @@
                     <div>Формочки: <a href="http://form-grabber.test" target="_blank" class="text-warning">form-grabber.test</a></div>
                     <div>Репозиторій формочок: <a href="https://github.com/tamila-ambeon/FORM-GRABBER" target="_blank" class="text-warning">FORM GRABBER</a></div>
                     <div>TODO: опиши суть як працюють бекапи, з посиланянми</div>
+                    <div>TODO: історії не видаляються, а deleted_at</div>
                     
 
                 </div>

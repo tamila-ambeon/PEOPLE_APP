@@ -12,23 +12,15 @@ Route::get('people-list', [PeopleController::class, 'list']);
 Route::get('person/create', function () {   return view('pages.person.create'); });
 Route::get('person/{id}', [PeopleController::class, 'person']);
 Route::get('person/{id}/edit', [PeopleController::class, 'contacts']);
-
 Route::get('person/{id}/open_answer/{field}', [PeopleController::class, 'openAnswer']);
 
-
-
-//Route::get('person/{id}/edit/signs', [PeopleController::class, 'shortcuts']);
 Route::get('person/{id}/stories', [PeopleController::class, 'stories']);
 Route::get('person/{id}/stories/create', [PeopleController::class, 'new_history']);
-Route::get('person/{id}/edit/histories/{history_id}', [PeopleController::class, 'edit_history']);
-Route::get('person/{id}/photographs', [PeopleController::class, 'photographs']);
+Route::get('person/{id}/stories/{history_id}', [PeopleController::class, 'edit_history']);
 
-
-//Route::get('person/{id}/weaknesses', [PeopleController::class, 'weaknesses']);
-
-Route::get('person/{id}/photographs', [PeopleController::class, 'photos']);
-Route::get('person/{id}/upload_photos', [PeopleController::class, 'upload_photos']);
-Route::get('person/{id}/photographs/{photo_id}/edit', [PeopleController::class, 'photo_edit']);
+Route::get('person/{id}/photos', [PeopleController::class, 'photos']);
+Route::get('person/{id}/photos/create', [PeopleController::class, 'upload_photos']);
+Route::get('person/{id}/photos/{photo_id}', [PeopleController::class, 'photo_edit']);
 
 // Файли:
 Route::get('files', [SignController::class, 'list']); // А нащо цей роут???

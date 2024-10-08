@@ -5,7 +5,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">Фотографії 
+        <a class="nav-link" href="{{URL::to('/')}}/person/{{$person->id}}/photos">Фотографії 
             <span class="badge text-bg-success">{{$person->photos_count}}</span>
         </a>
     </li>

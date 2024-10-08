@@ -32,7 +32,7 @@
                 
             </div>
             <div class="bg-light border-top ps-2 pe-2 font-size-12 pt-1 pb-1 d-flex flex-row-reverse @if($quality > 0) border-success @elseif($quality < 0) border-danger @else @endif">
-                <a href="{{URL::to("/")}}/person/{{$person->id}}/edit/histories/{{$id}}">редагувати</a>
+                <a href="{{URL::to("/")}}/person/{{$person->id}}/stories/{{$id}}">редагувати</a>
             </div>
         </div>
         <!--- /Контент --->

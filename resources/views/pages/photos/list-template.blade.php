@@ -12,7 +12,7 @@
             <div class="bg-white flex-fill content-outer p-3">
                 <div class="d-flex justify-content-between">
                     <div class="title">{{ $file->id }}. {{ $file->title }}</div>
-                    <div class="title-edit"><a href="{{URL::to('/')}}/person/{{$file->people_id}}/photographs/{{$file->id}}/edit">Редагувати #{{ $file->id }}</a></div>
+                    <div class="title-edit"><a href="{{URL::to('/')}}/person/{{$file->people_id}}/photos/{{$file->id}}">Редагувати #{{ $file->id }}</a></div>
                 </div>
                
                 <div class="content">

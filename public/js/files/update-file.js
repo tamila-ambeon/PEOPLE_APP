@@ -3,7 +3,7 @@ class Person extends FormGrabber
     beforeSend() {}
     onSuccess(json) 
     {
-        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/photographs/" + json.data.id + "/edit"
+        location.href = document.getElementsByTagName("base")[0].href + "person/" + json.data.people_id + "/photos/" + json.data.id
     }
     onError(error) {}
 }
