@@ -167,9 +167,26 @@
                 </tr>
                 <tr>
                     <td class="font-roboto-bold">
-                        <div class="d-flex align-items-center">Що показує історія стосунків:</div>
+                        <div class="d-flex align-items-center">Історія стосунків:</div>
                     </td>
-                    <td>к-ть: {{$person->history_count}}, якість: {{$person->relationship_quality}}</td>
+                    <td>
+                        <div><a href="{{URL::to('/')}}/person/{{$person->id}}/stories">{{$person->history_count}} дописів</a></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="font-roboto-bold">
+                        Якість стосунків:
+                        <br><span class="font-roboto-light font-size-12 fc-secondary">Кредит довіри</span>
+                    </td>
+                    <td>
+                        <div>
+                            @if($person->relationship_quality > 0) <span class="badge text-bg-success ps-3 pe-3 pt-2 pb-2 font-size-15">{{$person->relationship_quality}}</span> 
+                            @elseif($person->relationship_quality < 0) <span class="badge text-bg-danger ps-3 pe-3 pt-2 pb-2 font-size-15">{{$person->relationship_quality}}</span>
+                            @else <span class="badge text-bg-light ps-3 pe-3 pt-2 pb-2 font-size-15">{{$person->relationship_quality}}</span>
+                            @endif
+                        </div>
+                    </td>
                 </tr>
 
                 <tr>

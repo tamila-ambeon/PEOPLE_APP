@@ -5,13 +5,14 @@
         <!--- Мета: --->
         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
             <div class="">
-                <div class="font-roboto-bold font-size-18">{{\Carbon\Carbon::parse($date)->format('j F Y')}}</div>
-                <div class="font-roboto font-size-16 fc-secondary mb-1">
+                <div class="font-roboto-bold font-size-17">{{\Carbon\Carbon::parse($date)->format('j F Y')}}</div>
+                <div class="font-roboto font-size-14 fc-secondary mb-1">
                     
                     @if($quality > 0) <span class="badge text-bg-success">{{$quality}}</span> 
                     @elseif($quality < 0) <span class="badge text-bg-danger">{{$quality}}</span>
                     @else <span class="badge text-bg-light">{{$quality}}</span>
                     @endif 
+                    {{config('people.story_quality_text')[$quality]}}
                 </div>
             </div>
         </div>

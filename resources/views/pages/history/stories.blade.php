@@ -42,15 +42,33 @@
     <script>
         // Редірект при кліку на кнопку створення:
         document.getElementById("add_new").onclick = function (event) {
-            location.href = "{{URL::to('/')}}/person/{{$person->id}}/histories/new"
+            location.href = "{{URL::to('/')}}/person/{{$person->id}}/stories/create"
         }
     </script>
 
+
+
     </div>
     <div class="bg-white p-3 rounded border mb-3 font-size-12 text-center">Зводити рахунки дуже корисно і потрібно. Пам'ять підводить. Записи покажуть справжню цінність цих стосунків.<br>Кредит довіри до людини залежить від того, наскільки цінними є ці стосунки для мене.</div>
-
+<table class="table font-size-13 border">
+    <tr>
+        <td class="font-roboto-bold">
+            Якість стосунків:
+            <br><span class="font-roboto-light font-size-12 fc-secondary">Кредит довіри</span>
+        </td>
+        <td>
+            <div>
+                @if($person->relationship_quality > 0) <span class="badge text-bg-success ps-3 pe-3 pt-2 pb-2 font-size-15">{{$person->relationship_quality}}</span> 
+                @elseif($person->relationship_quality < 0) <span class="badge text-bg-danger ps-3 pe-3 pt-2 pb-2 font-size-15">{{$person->relationship_quality}}</span>
+                @else <span class="badge text-bg-light ps-3 pe-3 pt-2 pb-2 font-size-15">{{$person->relationship_quality}}</span>
+                @endif
+            </div>
+        </td>
+    </tr>
+</table>
 
     <div class="content">
+        <h2 class="border-bottom pb-2">Історія:</h2>
         @forelse ($histories as $history)
             @include('parts.stories.view_story', $history)
         @empty

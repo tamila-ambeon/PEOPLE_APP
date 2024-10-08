@@ -34,111 +34,108 @@
     'value' => $history->id
 ])
 
-<!--- CONTENT: ---->
-<div class="container mt-4 mb-4">
 
-    <div class="mb-3">
-        @include("templates.person.section-title", [ 
-            'left' => 'Дата події:', 
-            'right' => null
-        ])
+<!--- BLOCK: --->
+<div class="container mt-3 mb-3">
+    <div class="row">
 
-        <div class="d-flex flex-row">
-            @include('forms.date-picker', [
-                'id' => "date",
-                "disabled" => false,
-                'value' => $history->date // format: YYYY-MM-DD
-            ])
-        </div>
-    </div>
-    
+        <!--- Мета: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 mb-3">
+            <div class="font-roboto-bold font-size-19 mb-1">Дата події:</div>
+                <div class="d-flex flex-row">
+                    @include('forms.date-picker', [
+                        'id' => "date",
+                        "disabled" => false,
+                        'value' => $history->date // format: YYYY-MM-DD
+                    ])
+                </div>
 
-    <div class="mb-3">
-        @include("templates.person.section-title", [ 
-            'left' => 'Опис події:', 
-            'right' => null
-        ])
-        <div class="bg-white">
-        @include('forms.text-editor', [
-            'id' => "content", 
-            "readonly" => false, 
-            'value' => $history->content
-        ])
-        </div>
-    </div>
+            <div class="font-roboto-bold font-size-19 mb-1">Оцінка події:</div>
+                <div class="d-flex flex-row">
+                    @include('forms.select', [
+                        'id' => "quality",  
+                        'items' => config('people.story_quality'),
+                        "disabled" => false,
+                        'selected_value' => $history->quality
+                    ])
+                </div>
+            </div>
+        <!--- /Мета --->
 
-    <div class="mb-3">
-    @include("templates.person.section-title", [ 
-        'left' => 'Моя оцінка:', 
-        'right' => null
-    ])
+        <!--- Контент: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9">
+            <div class="">
+                <div class="mb-3">
+                    <div class="font-roboto-bold font-size-19 mb-1">Опис події:</div>
 
-    @include('forms.select', [
-        'id' => "quality",  
-        'items' => [
-            -5 => "Піздець! Це неприпустимо! (-5)", 
-            -4 => "Дуже сильно погано (-4)", 
-            -3 => "Погано (-3)", 
-            -2 => "Неприємно (-2)", 
-            -1 => "Щось не так (-1)", 
-            0 => "Нормально (0)", 
-            1 => "Добрий знак (+1)",
-            2 => "Приємно (+2)",
-            3 => "Добре (+3)",
-            4 => "Дуже добре (+4)",
-            5 => "Супер пупер! Мега ідеально! (+5)",
-        ],
-        "disabled" => false,
-        'selected_value' => $history->quality
-    ])
-    </div>
+                    <div class="bg-white">
+                    @include('forms.text-editor', [
+                        'id' => "content", 
+                        "readonly" => false, 
+                        'value' => $history->content
+                    ])
+                    </div>
+                </div>
+                
+            </div>
 
-
-    <div class="d-flex flex-row-reverse mb-3">
+            <div class="d-flex flex-row-reverse mb-3">
         
 
-        @include('forms.button', [
-            'id' => 'update_history', // ідентифікатор кнопки
-            'title' => 'Зберегти', // надпис на кнопці
-            'size' => 'middle', // small, middle, big
-            'type' => 'green', // green, red, disabled, default
-            //'display' => false, // додає клан d-none
-            //'icon' => 'spinner' // наразі лише 1 іконка
-        ])
-        @include('forms.button', [
-            'id' => 'update_history_request', // ідентифікатор кнопки
-            'title' => 'Обробляю запит', // надпис на кнопці
-            'size' => 'small', // small, middle, big
-            'type' => 'disabled', // green, red, disabled, default
-            'display' => false, // додає клан d-none
-            'icon' => 'spinner' // наразі лише 1 іконка
-        ])
+                @include('forms.button', [
+                    'id' => 'update_history', // ідентифікатор кнопки
+                    'title' => 'Зберегти', // надпис на кнопці
+                    'size' => 'middle', // small, middle, big
+                    'type' => 'green', // green, red, disabled, default
+                    //'display' => false, // додає клан d-none
+                    //'icon' => 'spinner' // наразі лише 1 іконка
+                ])
+                @include('forms.button', [
+                    'id' => 'update_history_request', // ідентифікатор кнопки
+                    'title' => 'Обробляю запит', // надпис на кнопці
+                    'size' => 'small', // small, middle, big
+                    'type' => 'disabled', // green, red, disabled, default
+                    'display' => false, // додає клан d-none
+                    'icon' => 'spinner' // наразі лише 1 іконка
+                ])
+        
+        
+                <div class="ms-2 me-2">
+                    @include('forms.modal-button', [
+                        'id' => 'show-delete-modal', // ідентифікатор кнопки
+                        'modal_id' => 'delete-modal', // ідентифікатор модального вікна
+                        'title' => 'Видалити', // надпис на кнопці
+                        'size' => 'middle', // small, middle, big
+                        'type' => 'red', // green, red, disabled, default
+                    ])
+                </div>
+        
+                @include('templates.modal', [
+                    'success_button_id' => 'confirm-deleting',
+                    'modal_id' => 'delete-modal',
+                    'title' => 'Точно бажаєш видалити цей допис?',
+                    'content' => 'Буде видалено історію #' . $history->id,
+                ])
+        
+            </div>
 
-
-        <div class="ms-2 me-2">
-            @include('forms.modal-button', [
-                'id' => 'show-delete-modal', // ідентифікатор кнопки
-                'modal_id' => 'delete-modal', // ідентифікатор модального вікна
-                'title' => 'Видалити', // надпис на кнопці
-                'size' => 'middle', // small, middle, big
-                'type' => 'red', // green, red, disabled, default
-            ])
         </div>
+        <!--- /Контент --->
 
-        @include('templates.modal', [
-            'success_button_id' => 'confirm-deleting',
-            'modal_id' => 'delete-modal',
-            'title' => 'Точно бажаєш видалити цей допис?',
-            'content' => 'Буде видалено історію #' . $history->id,
-        ])
-
-    </div>
-
-  
-
-
+    </div> 
 </div>
-<!--- /CONTENT ---->
+<!--- /BLOCK --->
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="{{URL::to('/')}}/js/person/edit-history.js"></script>
 
