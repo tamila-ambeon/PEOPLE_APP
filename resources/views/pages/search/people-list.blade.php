@@ -4,12 +4,6 @@
  
 @section('content')
 
-<!--------- TITLE: ---------->
-@include('templates.header', [
-    'title' => 'Список людей'
-])
-<!--------- /TITLE ---------->
-
 <!--------- BREADCRUMBS: ---------->
 @include('templates.breadcrumbs', [ 'items' => [
     ["title" => "Головна", "url" => URL::to('/')],
@@ -17,9 +11,9 @@
 ]])
 <!--------- /BREADCRUMBS ---------->
 
-<div class="container pt-3 d-flex justify-content-center ">
-    <div class="col-sm-12 col-md-10 col-lg-8 col-xl-7 ">
-    <div class="d-flex flex-row-reverse">
+<div class="container mt-3 mb-3">
+    <div class="row">
+    <div class="d-flex flex-row">
             <!---------------->
             @include('forms.button', [
                 'id' => 'go-to-create-person', // ідентифікатор кнопки
@@ -39,32 +33,50 @@
     }
 </script>
 
+
+
+
 <div class="container pt-3 d-flex justify-content-center ">
     {{ $people->links('templates.people-list-pagination') }}
 </div>
 
-<!-- CENTERED COL: --->
-<div class="container d-flex justify-content-center ">
-    <div class="col-sm-12 col-md-10 col-lg-8 col-xl-7 ps-3 pe-3 pt-1 pb-1">
 
-        <div class="container p-0 mt-3">
+
+<!--- BLOCK: --->
+<div class="container mt-2 mb-2">
+    <div class="row">
+
+        <!--- Мета: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+            <div class="">
+111111111
+            </div>
+        </div>
+        <!--- /Мета --->
+
+        <!--- Контент: --->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-9 p-0">
             @forelse($people as $person) 
                 <div class="">
-                    @include('templates.person.card', $person->toArray())
+                    @include('pages.search.search-result', $person->toArray())
                 </div>
             @empty
                 <p>Дописів нема.</p>
             @endforelse
         </div>
+        <!--- /Контент --->
 
-    </div>
+    </div> 
 </div>
-    
+<!--- /BLOCK --->
 
 
 <div class="container pt-3 d-flex justify-content-center mb-5">
-     {{ $people->links('templates.people-list-pagination') }}
+    {{ $people->links('templates.people-list-pagination') }}
 </div>
+
+
+
 
 
 @endsection

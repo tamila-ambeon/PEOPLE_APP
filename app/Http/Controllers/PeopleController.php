@@ -52,9 +52,9 @@ class PeopleController extends Controller
 
     public function list() 
     {
-        $people = People::orderBy('id', 'desc')->paginate(7);
+        $people = People::orderBy('id', 'desc')->paginate(5);
 
-        return view('pages.people-list', ['people' => $people]);
+        return view('pages.search.people-list', ['people' => $people]);
     }
 
     public function person($id) 
