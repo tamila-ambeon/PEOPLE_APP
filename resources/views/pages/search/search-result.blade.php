@@ -29,6 +29,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="font-roboto-bold font-size-14">Круг:</div>
+                        <div class="mb-3">
+                            <div class="d-flex flex-row p-1">
+                                <div class="font-size-13">
+                                    @include('parts.person.select_disabled', ['field' => "circle"])
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="mb-3">
 
                             <div class="d-flex flex-row">

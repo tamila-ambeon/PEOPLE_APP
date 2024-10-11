@@ -4,12 +4,6 @@
  
 @section('content')
 
-<!--------- TITLE: ---------->
-@include('templates.header', [
-    'title' => 'Додати людину'
-])
-<!--------- /TITLE ---------->
-
 
 <!--------- BREADCRUMBS: ---------->
 @include('templates.breadcrumbs', [ 'items' => [
@@ -90,13 +84,9 @@
 </div>
 
 
-<div class="mb-5">
 
-</div>
-
-
-<div class="bg-light p-4 mb-5">
-    При додаванні людини у базу достатньо вказати її ім'я. <br>Решту інформації можна заповнити пізніше.
+<div class="bg-light p-3 mb-3 font-size-14">
+    Решту інформації можна заповнити пізніше.
 </div>
 
     </div>

@@ -50,9 +50,52 @@ class PeopleController extends Controller
         return view('pages.search', ["people" => $people]);
     }
 
-    public function list() 
+    public function list(Request $request) 
     {
-        $people = People::orderBy('id', 'desc')->paginate(5);
+        $people = People::orderBy('id', 'desc');
+        
+        if ($request->has('keyword')) {
+            if(strlen($request->keyword) > 0) {
+                $people = $people->where(function ($query) use ($request) {
+                    $query->where('name', 'like', "%" . $request->keyword . '%')
+                        ->orWhere('surname', 'like', "%" . $request->keyword . '%')
+                        ->orWhere('middlename', 'like', "%" . $request->keyword . '%');
+                });
+            }
+        }
+
+        if ($request->has('gender')) {
+            if($request->gender != -1) {
+                $people = $people->where('gender', $request->gender);
+            }
+        }
+
+        if ($request->has('wing')) {
+            if($request->wing != -1) {
+                $people = $people->where('wing', $request->wing);
+            }
+        }
+
+        if ($request->has('radicalism')) {
+            if($request->radicalism != -1) {
+                $people = $people->where('radicalism', $request->radicalism);
+            }   
+        }
+
+        if ($request->has('circle')) {
+            if($request->circle != -1) {
+                $people = $people->where('circle', $request->circle);
+            }  
+        }
+
+        if ($request->has('age_from')) {}
+        if ($request->has('age_to')) {}
+
+
+
+
+        
+        $people = $people->paginate(5)->appends(request()->query());
 
         return view('pages.search.people-list', ['people' => $people]);
     }

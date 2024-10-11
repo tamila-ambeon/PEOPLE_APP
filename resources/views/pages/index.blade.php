@@ -4,11 +4,13 @@
  
 @section('content')
 
-<!--------- TITLE: ---------->
-@include('templates.header', [
-    'title' => 'Люди'
-])
-<!--------- /TITLE ---------->
+<!--------- BREADCRUMBS: ---------->
+@include('templates.breadcrumbs', [ 'items' => [
+    ["title" => "Головна", "url" => URL::to('/')],
+    ["title" => "Список людей", "url" => URL::to('/') . '/people-list'],
+    ["title" => "Dashboard", "url" => null],
+]])
+<!--------- /BREADCRUMBS ---------->
 
 <!------------------->
 <div class="container-fluid">
