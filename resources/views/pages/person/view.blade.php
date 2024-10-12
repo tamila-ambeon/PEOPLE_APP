@@ -75,11 +75,12 @@
                     </tr>
                     <tr>
                         <td class="font-roboto-bold"><div class="d-flex align-items-center">Дата народження:</div></td>
-                        <td class="bg-light border-start">{{$person->birth_date}} (вік)</td>
+                        
+                        <td class="bg-light border-start">{{$person->birth_date}} / {{ $person->age() }} років / До дня народження: {{ $person->daysToBirthday() }} днів</td>
                     </tr>
                     <tr>
                         <td class="font-roboto-bold"><div class="d-flex align-items-center">Дата знайомства:</div></td>
-                        <td class="bg-light border-start">{{$person->date_we_met}} (час)</td>
+                        <td class="bg-light border-start">{{$person->date_we_met}} ({{$person->yearsWeMet()}} років знайомі)</td>
                     </tr>
                 </tbody>
             </table>

@@ -8,6 +8,7 @@ use App\Models\History;
 use App\Models\Sign;
 use App\Models\PeopleSign;
 use App\Models\File as PersonFile;
+use Carbon\Carbon;
 
 class PeopleController extends Controller
 {
@@ -88,12 +89,21 @@ class PeopleController extends Controller
             }  
         }
 
-        if ($request->has('age_from')) {}
-        if ($request->has('age_to')) {}
+        $ageTo = 150;
+        if($request->has('age_to')) {
+            if($request->age_to > 0) {
+                $ageTo = $request->age_to;
+            }
+        }
 
-
-
-
+        if ($request->has('age_from') and $request->has('age_to')) {
+            if($request->age_from >= 0) {
+                $yearFrom = Carbon::today()->subYears($ageTo)->startOfYear();   
+                $yearTo = Carbon::today()->subYears($request->age_from)->endOfYear();
+                $people = $people->whereBetween('birth_date', [$yearFrom, $yearTo]);
+                //dd($yearFrom, $yearTo, $people);
+            }
+        }
         
         $people = $people->paginate(5)->appends(request()->query());
 

@@ -2,9 +2,8 @@
     <div class="row bg-white pb-2 border">
 
         <div class="me-5 border-bottom pb-2 pt-2 bg-light">
-            <a href="{{URL::to('/')}}/person/{{$id}}">@if(isset($surname)){{$surname}}@endif
-            @if(isset($name)){{$name}}@endif
-            @if(isset($middlename)){{$middlename}}@endif</a>
+        <a href="{{URL::to('/')}}/person/{{$id}}">{{trim(implode(" ",[$surname, $name, $middlename]))}}</a> 
+            @if($person->birth_date != null)[ {{ $person->age() }} років / До дня народження: {{ $person->daysToBirthday() }} днів ] @endif
         </div>
 
         <!--- BLOCK: --->
