@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('people', function (Blueprint $table) {
             $table->integer('circle')->default(0)->comment('Круг: ближній, дальній, вороги');
+            $table->integer('dating_interest')->default(0)->comment('Чи розглядаю я цю жінку для стосунків');
             $table->integer('religion')->default(0)->comment('Релігійні погляди');
             $table->integer('wing')->default(0)->comment('Політичне крило: ліві чи праві?');
             $table->integer('weight')->default(0)->comment('Вага у суспільстві');
@@ -59,6 +60,7 @@ return new class extends Migration
             $table->dropColumn('potential_contributions');
             $table->dropColumn('vibe');
             $table->dropColumn('content_preferences');
+            $table->dropColumn('dating_interest');
         });
     }
 };

@@ -48,13 +48,14 @@ class UserSeeder extends Seeder
     {
         
         
-        for($i = 0; $i <= 6; $i++) {
-            $gender = $this->faker->randomElement(['male', 'female']);
+        for($i = 0; $i <= 10; $i++) {
+            $gender = $this->faker->randomElement([0, 1]);
 
             DB::table('people')->insert([
                 'name' => $this->faker->firstName($gender),
                 'surname' => $this->faker->lastName($gender) ,
                 'middlename' => $this->faker->middleName($gender),
+                'gender' => $gender,
             ]);
         }
     }

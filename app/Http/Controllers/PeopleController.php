@@ -14,25 +14,37 @@ class PeopleController extends Controller
 {
     public function index() 
     {
-        $closePeople = People::where('range_x', '<=', 100)
-            ->orderBy('range_x', 'asc')
-            ->orderBy('range_y', 'asc')
-            ->get();
-
-        $farPeople = People::where('range_x', '>', 100)->where('range_x', '<=', 400)
-            ->orderBy('range_x', 'asc')
-            ->orderBy('range_y', 'asc')
-            ->get();
-
-        $enemyPeople = People::where('range_x', '>', 400)->where('range_x', '<=', 1000)
-            ->orderBy('range_x', 'asc')
-            ->orderBy('range_y', 'asc')
-            ->get();
+        // Отримання поточної дати
+        $today = Carbon::now();
 
         return view('pages.index', [
-            'closePeople' => $closePeople,
-            'farPeople' => $farPeople,
-            'enemyPeople' => $enemyPeople,
+            'data' => [
+                'nearestBirthday' => People::whereBetween('birth_date', [
+                    $today->startOfDay(),
+                    $today->copy()->addDays(10)->endOfDay()
+                ])->get(),
+                'last_relations' => History::orderBy('created_at', 'desc')
+                ->select('people_id')
+                ->distinct('people_id')
+                ->take(10)
+                ->get(),
+                'woman' => People::where('gender', 0)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'dating_interest' => People::where('gender', 0)->where('dating_interest', 1)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'best' => People::orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'worst' => People::orderBy('relationship_quality', 'asc')->take(10)->get(),
+                'close' => People::where('circle', 1)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'distant' => People::where('circle', 2)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'neutral' => People::where('circle', 3)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'enemy' => People::where('circle', 4)->orderBy('relationship_quality', 'asc')->take(10)->get(),
+                'leftist' => People::where('wing', 1)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'righttist' => People::where('wing', 2)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'centrist' => People::where('wing', 3)->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'radicals' => People::where('radicalism', 2)->orderBy('relationship_quality', 'asc')->take(10)->get(),
+                'trust_in_person' => People::orderBy('trust_in_person', 'desc')->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'trust_in_me' => People::orderBy('trust_in_me', 'desc')->orderBy('relationship_quality', 'desc')->take(10)->get(),
+                'dangerous' => People::where('dangerous', '>=', 4)->orderBy('dangerous', 'desc')->orderBy('relationship_quality', 'asc')->take(10)->get(),
+                'benefits_for_me' => People::where('benefits_for_me', '>=', 2)->orderBy('benefits_for_me', 'desc')->orderBy('relationship_quality', 'desc')->take(10)->get(),
+            ]
         ]);
     }
     

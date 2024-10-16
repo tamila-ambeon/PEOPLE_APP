@@ -24,6 +24,7 @@
     <div class="container">
         <div class="">
             <div class="row">
+                <div class="text-center">Я маю вибір!</div>
                 <div class="col-4">
                     <div class="font-plex">Розробка:</div>
                     <div>GitHub Account: <a href="https://github.com/tamila-ambeon" target="_blank" class="text-warning">Tamila Ambeon</a></div>
@@ -36,9 +37,7 @@
                     <div class="font-plex">Документація:</div>
                     <div>Формочки: <a href="http://form-grabber.test" target="_blank" class="text-warning">form-grabber.test</a></div>
                     <div>Репозиторій формочок: <a href="https://github.com/tamila-ambeon/FORM-GRABBER" target="_blank" class="text-warning">FORM GRABBER</a></div>
-                    <div>TODO: опиши суть як працюють бекапи, з посиланянми</div>
-                    <div>TODO: історії не видаляються, а deleted_at</div>
-                    
+
 
                 </div>
                 <div class="col-4">
@@ -50,5 +49,6 @@
 </div>
 
 @yield('scripts')
+<script src="{{URL::to('/')}}/js/blur.js"></script>
     </body>
 </html>

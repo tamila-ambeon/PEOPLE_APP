@@ -73,6 +73,19 @@
                         <td class="font-roboto-bold"><div class="d-flex align-items-center">Стать:</div></td>
                         <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'gender'])</td>
                     </tr>
+                    @if($person->gener == 0)
+                        @if($person->relationship_quality > -10)
+                            <tr>
+                                <td class="font-roboto-bold">
+                                    <div class="d-flex align-items-center">Чи цікавить вона мене:</div>
+                                    <div class="font-roboto-light font-size-12 fc-secondary mb-1">Лише якщо є висока якість стосунків</div>
+                                </td>
+                                <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'dating_interest'])</td>
+                            </tr>
+                        @endif
+                    @endif
+                    
+
                     <tr>
                         <td class="font-roboto-bold"><div class="d-flex align-items-center">Дата народження:</div></td>
                         
