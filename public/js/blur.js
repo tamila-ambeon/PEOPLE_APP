@@ -1,4 +1,4 @@
-const allowedTime = 10 * 1000
+const allowedTime = 180 * 1000
 
 const testLastActive = localStorage.getItem('lastActive')
 if (testLastActive !== null) {
@@ -26,16 +26,22 @@ function checkBlur()
     let timePassed = Date.now() - lastActive
 
     if (timePassed > allowedTime) { // 5 хвилин в мілісекундах
-        blurSite()
-        blockSelection()
-        isBlured = true
+        blurNow()
     } else {
-        console.log('time left', miliToTime(allowedTime - timePassed))
+       // console.log('time left', miliToTime(allowedTime - timePassed), timePassed, allowedTime)
         unblurSite()
         allowSelection()
         isBlured = false
     }
 }
+
+function blurNow()
+{
+    blurSite()
+    blockSelection()
+    isBlured = true
+}
+
 
 // Ініціалізація таймера для розмиття
 checkBlur()
