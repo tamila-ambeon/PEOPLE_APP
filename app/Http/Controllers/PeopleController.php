@@ -23,11 +23,12 @@ class PeopleController extends Controller
                     $today->startOfDay(),
                     $today->copy()->addDays(10)->endOfDay()
                 ])->get(),
-                'last_relations' => History::orderBy('created_at', 'desc')
-                ->select('people_id')
-                ->distinct('people_id')
-                ->take(10)
-                ->get(),
+                'last_relations' => 
+                    History::orderBy('created_at', 'desc')
+                   // ->select('people_id')
+                    ->distinct('people_id')
+                    ->take(10)
+                    ->get(),
                 'woman' => People::where('gender', 0)->orderBy('relationship_quality', 'desc')->take(10)->get(),
                 'dating_interest' => People::where('gender', 0)->where('dating_interest', 1)->orderBy('relationship_quality', 'desc')->take(10)->get(),
                 'best' => People::orderBy('relationship_quality', 'desc')->take(10)->get(),
