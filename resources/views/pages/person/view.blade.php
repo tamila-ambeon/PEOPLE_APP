@@ -73,7 +73,7 @@
                         <td class="font-roboto-bold"><div class="d-flex align-items-center">Стать:</div></td>
                         <td class="bg-light border-start">@include('parts.person.select_with_autosave', ['field' => 'gender'])</td>
                     </tr>
-                    @if($person->gener == 0)
+                    @if($person->gender == 0)
                         @if($person->relationship_quality > -10)
                             <tr>
                                 <td class="font-roboto-bold">
