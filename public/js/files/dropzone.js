@@ -1,7 +1,7 @@
 class SendFile extends FormGrabber
 {
     beforeSend() {
-        this.dontSendAutomatically()
+        this.disableSending()
     }
     onSuccess(json) {}
     onError(error) {}
