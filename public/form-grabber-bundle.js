@@ -20214,6 +20214,7 @@ class FormGrabber
     switchButtonElement = null
     formData = null
     isAutoSend = true
+    isButtonActive = true
     formData = new FormData()
 
     /**
@@ -20373,8 +20374,13 @@ class FormGrabber
     /**
      * 
      */
-    toggleButtonVisibility() 
-    {
+    toggleButtonVisibility()
+    { 
+       /* console.log("switchButtonElement", this.isButtonActive)
+        if(!this.isButtonActive) {
+            return false
+        }*/
+        
         if(this.buttonElement != null) {
             if(this.buttonElement.classList.contains('d-none')) {
                 this.buttonElement.classList.remove('d-none')
@@ -20412,9 +20418,25 @@ class FormGrabber
 
     beforeSend() {}
 
-    dontSendAutomatically()
+    /**
+     * 
+     */
+    disableSending(debug = false)
     {
-        this.isAutoSend = false;
+        this.isAutoSend = false
+        this.isButtonActive = false
+        if(debug) {
+            console.log("Sending was disabled! Here is form data for debugging: ")
+            for (const pair of this.formData.entries()) {
+                console.log(`${pair[0]}, ${pair[1]}`);
+            }
+        }
+    }
+
+    enableSending() 
+    {
+        this.isAutoSend = true
+        this.isButtonActive = true
     }
 
     /**
@@ -20423,6 +20445,7 @@ class FormGrabber
     async send(request)
     {
         if(!this.isAutoSend) {
+            this.toggleButtonVisibility()
             return false
         }
         

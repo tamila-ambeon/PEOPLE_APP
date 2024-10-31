@@ -18,6 +18,7 @@ Route::patch('/test-form-input', [IndexController::class, 'testFormInput']);
 
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
+Route::post('search_by_name', [RegisterController::class, 'searchByName']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', [RegisterController::class, 'profile']);

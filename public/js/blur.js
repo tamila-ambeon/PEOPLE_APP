@@ -1,4 +1,4 @@
-const allowedTime = 180 * 1000
+const allowedTime = 5 * 60 * 1000
 
 const testLastActive = localStorage.getItem('lastActive')
 if (testLastActive !== null) {
@@ -18,6 +18,7 @@ function blurSite() {
 // Функція для зняття розмиття
 function unblurSite() {
     document.body.style.filter = 'none';
+    //enableSelects()
 }
 
 function checkBlur() 
@@ -29,6 +30,7 @@ function checkBlur()
         blurNow()
     } else {
        // console.log('time left', miliToTime(allowedTime - timePassed), timePassed, allowedTime)
+       $("#timer-lock").text(miliToTime(allowedTime - timePassed))
         unblurSite()
         allowSelection()
         isBlured = false
@@ -40,6 +42,7 @@ function blurNow()
     blurSite()
     blockSelection()
     isBlured = true
+   // disableSelects()
 }
 
 
@@ -95,12 +98,32 @@ document.addEventListener('contextmenu', (event) => {
     }
 });
 
-
 window.addEventListener("wheel", (e) => {
     if(isBlured) {
         e.preventDefault()
     }
 }, { passive:false })
+
+function disableSelects() {
+    // Знайти всі селекти на сторінці
+    const selects = document.querySelectorAll('select');
+
+    // Додати обробник події на кожен селект
+    selects.forEach(select => {
+        $(select).prop('disabled', true)
+    });
+}
+
+function enableSelects() {
+    // Знайти всі селекти на сторінці
+    const selects = document.querySelectorAll('select');
+
+    // Додати обробник події на кожен селект
+    selects.forEach(select => {
+        $(select).prop('disabled', false)
+    });
+}
+
 
 function blockSelection() {
     document.body.style.userSelect = 'none';
@@ -127,3 +150,15 @@ function miliToTime(milliseconds) {
     // Формуємо рядок з результатом, використовуючи padStart() для додавання провідних нулів
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
+
+
+$(document).ready(function() {
+    $("#global-timer").click(function() {
+        // Створимо новий об'єкт Date
+        const today = new Date();
+        // Встановимо дату на один день раніше
+        today.setDate(today.getDate() - 1);
+        localStorage.setItem('lastActive', today.getTime())
+        blurNow()
+    });
+});

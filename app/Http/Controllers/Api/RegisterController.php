@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\People;
 
 class RegisterController extends Controller
 {
@@ -143,5 +144,77 @@ class RegisterController extends Controller
                 "error" => "Password changed!"
             ], 200);  
       }
+
+
+    /**
+      * 
+    */
+    public function searchByName(Request $request)
+    {
+        $name = People::query();
+        $surname = People::query();
+        $middlename = People::query();
+        $allowNameSearch = false;
+        $allowSurnameSearch = false;
+        $allowMiddlenameSearch = false;
+
+        if($request->has('name')) {
+            if(strlen($request->name) > 0) {
+                $allowNameSearch = true;
+                $name = $name->orWhere('name', 'like',  '%' . $request->name . '%');
+                $name = $name->orWhere('surname', 'like',  '%' . $request->name . '%');
+                $name = $name->orWhere('middlename', 'like',  '%' . $request->name . '%');
+            }
+        }
+
+        if($request->has('surname')) {
+            if(strlen($request->surname) > 0) {
+                $allowSurnameSearch = true;
+                $surname = $surname->orWhere('name', 'like',  '%' . $request->surname . '%');
+                $surname = $surname->orWhere('surname', 'like',  '%' . $request->surname . '%');
+                $surname = $surname->orWhere('middlename', 'like',  '%' . $request->surname . '%');
+            }
+        }
+        
+        if($request->has('middlename')) {
+            if(strlen($request->middlename) > 0) {
+                $allowMiddlenameSearch = true;
+                $middlename = $middlename->orWhere('name', 'like',  '%' . $request->middlename . '%');
+                $middlename = $middlename->orWhere('surname', 'like',  '%' . $request->middlename . '%');
+                $middlename = $middlename->orWhere('middlename', 'like',  '%' . $request->middlename . '%');
+            }
+        }
+        
+        if($allowNameSearch == true) {
+            $name = $name->get();
+        } else {
+            $name = [];
+        }
+
+        if($allowSurnameSearch == true) {
+            $surname = $surname->get();
+        } else {
+            $surname = [];
+        }
+
+        if($allowMiddlenameSearch == true) {
+            $middlename = $middlename->get();
+        } else {
+            $middlename = [];
+        }
+        
+        
+
+
+        return response()->json([
+            "data" => [
+                "name" => $name,
+                "surname" => $surname,
+                "middlename" =>  $middlename,
+            ],
+            "message" => "OK!"
+        ], 200);  
+    }
+      
       
 }
